@@ -18,12 +18,14 @@ import argparse
 import json
 import math
 import os
+import re
 import sys
 from collections import OrderedDict, defaultdict
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 SKILL = os.path.dirname(HERE)
 sys.path.insert(0, HERE)
+import handouts  # noqa: E402
 import sandwich  # noqa: E402
 
 REQUIREMENTS = ["vegetarian", "halal", "kosher", "gluten_free", "nut_free"]
@@ -123,11 +125,39 @@ def load_menu(name, seen=()):
     return menu
 
 
+LIST_FIELDS = ("notes", "equipment", "roles", "steps", "serving", "food_safety", "cleanup")
+
+
 def merge_menu(menu, extra):
     menu.setdefault("items", []).extend(extra.get("items", []))
-    for f in ("notes", "prep", "equipment"):
+    for f in LIST_FIELDS:
         menu[f] = menu.get(f, []) + [x for x in extra.get(f, []) if x not in menu.get(f, [])]
+    menu["diet"] = {**extra.get("diet", {}), **menu.get("diet", {})}
     menu.setdefault("extras", []).append(extra["name"])
+
+
+class _Blanks(dict):
+    def __missing__(self, key):
+        return "{" + key + "}"
+
+
+def render(text, values):
+    """Fill {ingredient_key} placeholders with this meal's quantities."""
+    return text.format_map(_Blanks(values))
+
+
+def minutes(t):
+    """'T-45' -> 45 (minutes before serving); untimed steps sort last."""
+    m = re.match(r"T\s*[-–]\s*(\d+)", t or "")
+    return int(m.group(1)) if m else -1
+
+
+def step_applies(step, reqs):
+    cond = step.get("if")
+    if not cond:
+        return True
+    conds = [cond] if isinstance(cond, str) else cond
+    return any(reqs.get(c) for c in conds)
 
 
 def template_needs(menu, ctx):
@@ -171,11 +201,11 @@ def plan(trip, catalog):
         mname = meal.get("menu") or meal.get("template")
         if mname == "sandwich_lunch":
             menu = dict(sandwich.MENU, items=[])
-            raw, notes = sandwich.needs(ctx, meal.get("options", {}))
+            raw, notes, counts = sandwich.needs(ctx, meal.get("options", {}))
             raw = [(k, q, b, ctx.prep_loss if l else 0, False) for k, q, b, l in raw]
         else:
             menu = load_menu(mname)
-            notes, raw = [], []
+            notes, raw, counts = [], [], {}
         for extra in meal.get("extras", []):
             merge_menu(menu, load_menu(extra))
         notes += menu.get("notes", [])
@@ -200,13 +230,26 @@ def plan(trip, catalog):
                 sys.exit(f"Menu {mname!r} uses unknown ingredient {k!r}; add it to references/ingredients.json")
             if q > 0:
                 uses[k].append((idx, meal.get("group", "(unassigned)"), q, b, l, lo))
+        needs = merge_needs(raw)
+        values = {k: fmt_qty(q, items[k]["unit"]) for k, q in needs}
+        values.update(counts, people=str(round(ctx.people)))
+        active = {**trip["_reqs"], "nut_free": trip["_nut_free"]}
+        steps = [{"t": st.get("t", ""), "text": render(st["text"], values)} if isinstance(st, dict)
+                 else {"t": "", "text": render(st, values)}
+                 for st in menu.get("steps", []) if not isinstance(st, dict) or step_applies(st, active)]
+        steps.sort(key=lambda st: -minutes(st["t"]))  # merged extras interleave by time
+        diet = {r: render(txt, values) for r, txt in menu.get("diet", {}).items() if active.get(r)}
         meals_out.append({"id": meal.get("id", f"meal{idx+1}"), "day": meal.get("day", ""),
                           "name": meal.get("name", menu["name"]),
                           "menu": " + ".join([menu["name"]] + menu.get("extras", [])),
                           "group": meal.get("group", "(unassigned)"), "people": round(ctx.people),
                           "equipment": menu.get("equipment", []), "notes": notes,
-                          "prep": menu.get("prep", []), "line": menu.get("line", []),
-                          "needs": merge_needs(raw)})
+                          "crew": crew, "roles": menu.get("roles", []), "steps": steps,
+                          "line": menu.get("line", []),
+                          "serving": [render(x, values) for x in menu.get("serving", [])],
+                          "food_safety": menu.get("food_safety", []),
+                          "cleanup": [render(x, values) for x in menu.get("cleanup", [])],
+                          "diet": diet, "needs": needs})
 
     # Carry-forward: leftovers from one meal that a later meal can use. Each
     # gets a labeled gallon bag; later purchases are NOT reduced for it.
@@ -282,7 +325,8 @@ PLURAL = {"leaf": "leaves"}
 def fmt_qty(q, unit):
     if unit not in INTEGER_UNITS:
         return f"{q:.1f} {unit}"
-    return f"{q:.0f} {unit if round(q) == 1 else PLURAL.get(unit, unit + 's')}"
+    n = math.ceil(q - 1e-9)  # counts round up: 0.4 rolls means buy/bring 1
+    return f"{n} {unit if n == 1 else PLURAL.get(unit, unit + 's')}"
 
 
 def report(result, trip, catalog):
@@ -313,8 +357,8 @@ def report(result, trip, catalog):
             p(f"- Equipment: {', '.join(m['equipment'])}")
         if m["line"]:
             p(f"- Line: {' → '.join(m['line'])}")
-        for s in m["prep"]:
-            p(f"- Prep {s}")
+        for st in m["steps"]:
+            p(f"- {st['t']}: {st['text']}" if st["t"] else f"- {st['text']}")
         p("- Uses: " + "; ".join(f"{items[k]['name'].lower()} {fmt_qty(q, items[k]['unit'])}" for k, q in m["needs"]))
 
     p()
@@ -433,6 +477,8 @@ def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--profile", required=True)
     ap.add_argument("--json", action="store_true", help="print structured output")
+    ap.add_argument("--handouts", metavar="DIR",
+                    help="also write one printable HTML packet per group (menu, prep, serving, shopping)")
     for k in ("kids", "adults", "walkups", "big_eaters"):
         ap.add_argument("--" + k.replace("_", "-"), type=int)
     for r in ("vegetarian", "halal", "kosher", "gluten_free"):
@@ -459,6 +505,9 @@ def main():
         print(json.dumps(result, indent=2, default=str))
     else:
         print(report(result, trip, catalog))
+    if a.handouts:
+        for path in handouts.write_handouts(result, trip, catalog, a.handouts, fmt_qty):
+            print(f"Wrote {path}", file=sys.stderr)
 
 
 if __name__ == "__main__":

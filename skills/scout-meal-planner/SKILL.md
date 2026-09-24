@@ -162,6 +162,18 @@ python3 scripts/plan_trip.py --profile plans/<trip>.json          # report
 python3 scripts/plan_trip.py --profile plans/<trip>.json --json   # data
 ```
 
+Printable packets, one per group, each with its meals (menu, crew roles,
+special diets, equipment checklist, that meal's quantities, a prep and
+cooking countdown with real quantities, serving line, food safety, cleanup
+and carry-forwards) plus its shopping list and hand-offs:
+
+```
+python3 scripts/plan_trip.py --profile plans/<trip>.json --handouts plans/handouts
+```
+
+In per-pack mode, a single `pack-shopping-list.html` is written too. Open
+the HTML in a browser and print; each meal starts on a new page.
+
 CLI flags override the profile for what-ifs (`--kosher 0`, `--kids 40`,
 `--nut-free`; see `--help`). A profile without `meals` is treated as a single
 sandwich lunch (the original format).
@@ -198,6 +210,16 @@ How the planner combines meals:
   ]
 }
 ```
+
+Instruction fields (these become the group's printed packet):
+`roles` (crew jobs), `steps` (a countdown: `{"t": "T-45", "text": "Crack
+{eggs} into bowls..."}`, where `{ingredient_key}` fills in this meal's
+quantity and `"if": "kosher"` (or a list) shows a step only when that
+requirement is on), `line` (serving order), `serving` (portion guidance),
+`food_safety`, `cleanup`, and `diet` (what each requirement group eats at
+this meal; only enabled ones print). Write steps for the volunteer who has
+never cooked for 80: temperatures, batch sizes, who does what, and when.
+Add-on menus' steps merge into the meal's countdown in time order.
 
 Item fields: `kid`/`adult` = amount per person in the ingredient's unit;
 `share` = fraction of people who take it; `main` = big eaters get extra;
@@ -289,5 +311,9 @@ planner's report as the source of numbers:
    plus hand-offs for shared items.
 5. **Leftover forecast**: waste-risk items first.
 6. **Open questions**: every estimate or assumption to confirm.
+
+Always generate the group packets (`--handouts`) too, and review them before
+handing them over. Read each countdown as the volunteer would: steps in
+order, quantities filled in, nothing duplicated, every enabled diet covered.
 
 Keep it to one page a volunteer could print.

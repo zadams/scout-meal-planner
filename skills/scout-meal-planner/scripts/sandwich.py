@@ -27,6 +27,42 @@ MENU = {
     # Bears/Webelos-age scouts can work the PB&J assembly line with adults
     "crew": {"adults": 5, "kids": 6},
     "glove_changes": {"adults": 4, "kids": 3},
+    "roles": [
+        "Certified sandwiches (1 adult): kosher, then halal, before anything else is opened; then slices tomatoes/onions",
+        "PB&J assembly line (3 adults + scouts): bread → PB → jelly → close → cut",
+        "Line lead (1 adult): sets out the build-your-own line, refills from the cooler",
+    ],
+    "steps": [
+        {"t": "T-60", "text": "Handwash station up. Set up tables and trash. Wipe down two prep surfaces: a small one for certified sandwiches, a long one for PB&J."},
+        {"t": "T-50", "if": "kosher", "text": "KOSHER FIRST, before any regular turkey is opened: fresh gloves, new disposable knife, wiped surface. Make {kosher_count} sandwiches with kosher bread + kosher turkey ({turkey_kosher}) + lettuce and pickles from freshly opened containers. NO cheese. Seal, label \"KOSHER, no dairy\", own cooler bag."},
+        {"t": "T-45", "if": "halal", "text": "HALAL: wipe down, fresh gloves, new knife. Make {halal_count} sandwiches with halal turkey ({turkey_halal}) + cheese + lettuce and pickles. Seal, label \"HALAL\", own cooler bag."},
+        {"t": "T-45", "text": "PB&J assembly line: lay out bread → peanut butter → jelly → close → cut in half. Make {pbj_count} sandwiches using about {peanut_butter} of peanut butter and {jelly} of jelly. Halves go on foil trays; cover them."},
+        {"t": "T-35", "text": "Toppings: on the certified surface (after those sandwiches are sealed and away), slice the tomatoes and red onions thin. Covered pans, into the cooler."},
+        {"t": "T-10", "text": "Build-your-own line: bread, hummus in a bowl with its own spoon, one tray each of turkey ({turkey_deli} total) and cheese, then toppings (each with its own tongs or fork), then mayo/mustard packets. Keep backup trays in the cooler."},
+    ],
+    "line": ["hand sanitizer", "grab-and-go bins: PB&J · HALAL · KOSHER", "bread", "hummus (own spoon)",
+             "turkey (tongs)", "cheese (tongs)", "toppings", "mayo/mustard packets", "chips", "fruit", "napkins"],
+    "serving": [
+        "One sandwich to start (PB&J halves count as one); seconds once everyone has gone through.",
+        "An adult stands by the certified bins and hands those sandwiches to the right families.",
+        "One chip bag and one piece of fruit each to start.",
+    ],
+    "food_safety": [
+        "Turkey, cheese, hummus and cut toppings stay in the cooler (40°F or colder) until serving; out no more than 2 hours (1 hour above 90°F).",
+        "Put out one tray at a time and refill from the cooler rather than setting everything out.",
+        "Gloves change between the certified batches and regular food, and after touching anything else.",
+    ],
+    "cleanup": [
+        "Bag and label opened turkey, cheese, bread and cut toppings; back in the cooler (see carry-forwards).",
+        "Wipe tables; pack out trash.",
+    ],
+    "diet": {
+        "vegetarian": "Hummus + cheese + lettuce sandwich on the build-your-own line (a full allotment is planned for them).",
+        "halal": "Pre-made, sealed HALAL turkey + cheese sandwich from the labeled bin.",
+        "kosher": "Pre-made, sealed KOSHER turkey sandwich (no dairy) from the labeled bin.",
+        "gluten_free": "Pre-made GF sandwiches, bagged and labeled, made first.",
+        "nut_free": "SunButter instead of peanut butter, labeled.",
+    },
 }
 
 
@@ -97,7 +133,9 @@ def needs(ctx, opts):
         mix.append(f"{halal_sw:.0f} halal")
     if kosher_sw:
         mix.append(f"{kosher_sw:.0f} kosher (no cheese)")
+    counts = {"pbj_count": f"{pbj:.0f}", "deli_count": f"{deli:.0f}", "veg_count": f"{veg_sw:.0f}",
+              "halal_count": f"{halal_sw:.0f}", "kosher_count": f"{kosher_sw:.0f}"}
     notes = ["Sandwiches: " + " + ".join(mix),
              "Storage: bag opened turkey, cheese, bread and sliced toppings; label, date, back in the cooler.",
              "Toppings: " + ", ".join(t.replace("_", " ") for t in toppings)]
-    return n, notes
+    return n, notes, counts

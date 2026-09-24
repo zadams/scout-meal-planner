@@ -18,11 +18,6 @@
     "Crew: Young scouts (K-2nd) help with fruit and serving; adults run the griddles.",
     "Storage: bag opened tortillas, shredded cheese and leftover diced onions/peppers; label, date, back in the cooler."
   ],
-  "prep": [
-    "T-45: Dice onions and peppers; crack and whisk eggs in batches of ~5 dozen.",
-    "T-30: Griddles on; saute peppers/onions first, then scramble eggs in batches into a covered pan.",
-    "T-10: Warm tortillas on the griddle edge; set out cheese, salsa, fruit."
-  ],
   "line": [
     "plates (or mess kits)",
     "tortillas",
@@ -153,5 +148,67 @@
   "glove_changes": {
     "adults": 4,
     "kids": 2
+  },
+  "roles": [
+    "Griddle leads (2 adults): veggies, eggs, tortillas",
+    "Prep (1 adult): crack and whisk eggs, dice veggies",
+    "Line lead (1 adult) + kid helpers: fruit, setting out the line, serving cheese and salsa"
+  ],
+  "steps": [
+    {
+      "t": "T-60",
+      "text": "Handwash station up (water jug, soap, paper towels). Wipe down prep tables. Set up griddles and burners; check fuel."
+    },
+    {
+      "t": "T-55",
+      "if": "kosher",
+      "text": "Set the sealed kosher meals aside on a separate, labeled tray. They are not opened or heated on our griddles."
+    },
+    {
+      "t": "T-45",
+      "text": "Adults: dice {onion} and {bell_pepper} on cutting boards. Kids: wash hands, glove up, and set out whole fruit ({fruit}) in bins."
+    },
+    {
+      "t": "T-40",
+      "text": "Crack {eggs} into large bowls, about 5 dozen per bowl. Whisk in a little salt and pepper. Keep the bowls in the cooler until they go on the griddle."
+    },
+    {
+      "t": "T-30",
+      "text": "Griddles to medium. Melt a little butter, then saute the peppers and onions 5 minutes until soft. Move them to a covered pan."
+    },
+    {
+      "t": "T-25",
+      "text": "Scramble the eggs in batches (about 2 dozen per griddle at a time) with butter. Cook until firm with no runny parts. Hold in covered foil pans at the cool edge of the griddle."
+    },
+    {
+      "t": "T-10",
+      "text": "Warm the tortillas ({tortilla_burrito}) 15-20 seconds per side; stack them in foil to stay soft."
+    },
+    {
+      "t": "T-5",
+      "text": "Set out the line: tortillas, eggs, peppers & onions, shredded cheese ({cheese_shredded}), salsa ({salsa}), hot sauce, fruit, napkins."
+    }
+  ],
+  "serving": [
+    "One burrito each to start; seconds once everyone has gone through.",
+    "About 1/3 cup of eggs per burrito. Adults serve the eggs; kids can serve cheese and fruit.",
+    "Hot sauce stays at the end of the line, away from little hands."
+  ],
+  "food_safety": [
+    "Raw eggs stay in the cooler until they hit the griddle. Separate spoons for raw and cooked eggs.",
+    "Cook eggs until firm (160°F). Cooked eggs are out no more than 2 hours (1 hour above 90°F).",
+    "Change gloves after handling raw eggs or shells."
+  ],
+  "cleanup": [
+    "Scrape griddles while warm. Egg shells and food scraps go in the trash, not the fire (critters).",
+    "Leftover cooked eggs are thrown out, not saved.",
+    "Bag and label opened tortillas, cheese, and leftover diced veggies (see carry-forwards)."
+  ],
+  "diet": {
+    "vegetarian": "Everything on the line is vegetarian (no meat at this meal).",
+    "halal": "OK as served: no meat, and the cheese is kosher-certified (no animal rennet).",
+    "kosher": "Sealed kosher meal (shared griddles aren't kosher). Hand it over unopened.",
+    "gluten_free": "Tortillas contain wheat. Serve eggs, veggies and fruit in a bowl, or bring GF tortillas.",
+    "nut_free": "No nuts on this menu; check the salsa label."
   }
 }

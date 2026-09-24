@@ -10,10 +10,6 @@
     "Choose nut-free bars without gelatin (check labels) while allergy status is unknown.",
     "Storage: bag opened bars and leftover fruit to go home."
   ],
-  "prep": [
-    "T-20: Hot water on for coffee, tea and hot chocolate.",
-    "T-10: Set out bars, leftover fruit, packets."
-  ],
   "items": [
     {
       "key": "breakfast_bars",
@@ -50,5 +46,31 @@
   "include": [
     "hot_drinks",
     "hot_cocoa"
-  ]
+  ],
+  "roles": [
+    "Hot water (1 adult)",
+    "Set-out (1 adult + scouts): bars, fruit, drinks station"
+  ],
+  "steps": [
+    {
+      "t": "T-10",
+      "text": "Set out breakfast bars ({breakfast_bars}) and all the leftover fruit from yesterday."
+    }
+  ],
+  "serving": [
+    "About 1-2 bars each; fruit while it lasts (it's leftovers, not one per person)."
+  ],
+  "food_safety": [
+    "Keep hot water away from the kids' side of the table."
+  ],
+  "cleanup": [
+    "Bag opened bars and remaining fruit to go home. Pack out all trash."
+  ],
+  "diet": {
+    "vegetarian": "Check the bars for gelatin.",
+    "halal": "Check the bars for gelatin.",
+    "kosher": "Check the bars for a kosher symbol.",
+    "gluten_free": "Bring GF bars.",
+    "nut_free": "Nut-free bars only."
+  }
 }

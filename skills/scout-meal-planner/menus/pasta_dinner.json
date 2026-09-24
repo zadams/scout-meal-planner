@@ -19,12 +19,6 @@
     "Crew: AOL scouts help with salad, serving and cleanup; adults handle boiling water.",
     "Storage: cool leftover sauce and pasta fast (shallow containers, into the cooler within 2 hours) or send it home; bag unused salad greens."
   ],
-  "prep": [
-    "T-60: Water on to boil (large pots take 30+ min on camp burners).",
-    "T-45: Veg sauce: warm marinara in its own pot. Meat sauce: brown turkey with diced onion, add marinara, simmer.",
-    "T-20: Cook pasta in batches; toss with a little oil so it doesn't clump.",
-    "T-5: Salad greens into bowls, dressing on the side."
-  ],
   "line": [
     "plates/bowls (or mess kits)",
     "pasta",
@@ -198,5 +192,63 @@
   "glove_changes": {
     "adults": 3,
     "kids": 2
+  },
+  "roles": [
+    "Water + pasta (2 adults): boiling water and draining are adults only",
+    "Sauces (1 adult): veg pot first, then meat pot",
+    "Salad + line (1 adult) + AOL scouts: salad bowls, serving parmesan and salad, cleanup"
+  ],
+  "steps": [
+    {
+      "t": "T-75",
+      "text": "Fill 2-3 large pots with water (about 5 quarts per pound of pasta, cooked in batches). Cover and bring to a boil; camp burners take 30-45 minutes."
+    },
+    {
+      "t": "T-60",
+      "text": "Handwash station up. Wipe down prep tables. Dice {onion} for the meat sauce."
+    },
+    {
+      "t": "T-55",
+      "if": "kosher",
+      "text": "Set the sealed kosher meals aside on a separate, labeled tray. They are not opened or heated in our pots."
+    },
+    {
+      "t": "T-50",
+      "text": "VEG SAUCE FIRST: in its own pot, warm about 40% of the marinara ({marinara} total) with Italian seasoning and garlic powder. Label the pot VEG and give it its own ladle."
+    },
+    {
+      "t": "T-45",
+      "text": "MEAT SAUCE: brown the ground turkey ({ground_turkey}) in a little oil with the diced onion, salt and pepper until there's no pink (165°F). Drain, add the rest of the marinara plus seasoning, and simmer 15 minutes. Label the pot MEAT."
+    },
+    {
+      "t": "T-30",
+      "text": "Salt the boiling water (about {salt} across all batches). Cook the pasta ({pasta}) in batches of about 2 lb per pot, 9-11 minutes. Drain, toss with a little oil, and hold covered."
+    },
+    {
+      "t": "T-10",
+      "text": "Salad: greens ({salad_greens}) into bowls; dressing ({salad_dressing}) on the side. Parmesan ({parmesan}) in a bowl with a spoon."
+    }
+  ],
+  "serving": [
+    "Line order: mess kits → pasta → VEG sauce → MEAT sauce → parmesan → salad. The veg sauce comes first so the meat ladle never touches it.",
+    "About 1 cup of pasta to start (1.5 for adults); seconds once everyone has gone through.",
+    "Keep both sauces on low heat, lids on."
+  ],
+  "food_safety": [
+    "Ground turkey is cooked to 165°F with no pink.",
+    "Only adults handle boiling water and draining. Kids stay back from the burners.",
+    "Hot food stays hot; leftovers go into shallow containers and into the cooler within 2 hours."
+  ],
+  "cleanup": [
+    "Let pasta water cool, strain out the food, and dispose of it per campground rules, away from water sources.",
+    "Scrape pots before washing. Sauce leftovers go home in containers; nothing is cooked Sunday.",
+    "Bag unused salad greens."
+  ],
+  "diet": {
+    "vegetarian": "VEG sauce pot (own ladle) + pasta + salad.",
+    "halal": "VEG sauce pot + pasta + salad. The meat sauce is ground turkey that isn't halal-certified.",
+    "kosher": "Sealed kosher meal (shared pots aren't kosher). Hand it over unopened.",
+    "gluten_free": "Regular pasta has wheat. Cook a separate pot of GF pasta first, with its own colander.",
+    "nut_free": "No nuts on this menu; check the dressing and parmesan labels."
   }
 }

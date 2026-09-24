@@ -13,10 +13,6 @@
     "Vegan (gelatin-free) marshmallows go in a separate, labeled bag for vegetarian, halal and kosher eaters. Regular marshmallows are usually pork gelatin.",
     "Storage: bag opened grahams, chocolate and marshmallows in gallon bags and put them in a sealed bin or car overnight (critters)."
   ],
-  "prep": [
-    "T-15: Open graham boxes and break bars into squares on a tray; set out both marshmallow bags, the vegan one labeled.",
-    "T-0: An adult runs the fire line; hand out marshmallows 2 at a time so bags don't disappear into the fire."
-  ],
   "items": [
     {
       "key": "graham_crackers",
@@ -79,5 +75,54 @@
       "fixed": 3,
       "buffer": 0
     }
-  ]
+  ],
+  "roles": [
+    "Fire lead (1 adult): fire, and the roasting line",
+    "Station lead (1 adult) + AOL scouts: trays, handing out marshmallows, hot chocolate"
+  ],
+  "steps": [
+    {
+      "t": "T-45",
+      "text": "Start the fire early; roasting works best over coals, not tall flames. Keep a bucket of water next to the fire ring."
+    },
+    {
+      "t": "T-15",
+      "text": "Trays: break graham crackers ({graham_crackers}) into squares; break chocolate bars ({chocolate_bars}) into squares. Set out the pack's reusable skewers."
+    },
+    {
+      "t": "T-10",
+      "text": "Marshmallows: regular ({marshmallows}) on one tray."
+    },
+    {
+      "t": "T-10",
+      "if": [
+        "vegetarian",
+        "halal",
+        "kosher"
+      ],
+      "text": "Vegan marshmallows ({marshmallows_vegan}) go on their OWN labeled tray, with their own skewers if possible (regular marshmallows are pork gelatin)."
+    }
+  ],
+  "serving": [
+    "Hand out marshmallows 2 at a time; they'll burn and drop a lot, and that's planned for.",
+    "Kids assemble on a napkin or paper towel away from the fire.",
+    "About 3-4 per kid over the night; slow it down if the trays empty too fast."
+  ],
+  "food_safety": [
+    "Skewers point down when walking; no running near the fire.",
+    "A flaming marshmallow gets blown out and cooled before eating; it's hotter than it looks.",
+    "One adult stays at the fire the whole time."
+  ],
+  "cleanup": [
+    "Wipe and wash the reusable skewers; count them back into the bin.",
+    "Bag opened grahams, chocolate and marshmallows; store them in a sealed bin or car overnight (critters).",
+    "Drown, stir and drown the fire before bed."
+  ],
+  "diet": {
+    "vegetarian": "Vegan marshmallows from the labeled tray.",
+    "halal": "Vegan marshmallows from the labeled tray.",
+    "kosher": "Vegan (kosher-certified) marshmallows from the labeled tray; check the graham and chocolate symbols.",
+    "gluten_free": "Graham crackers have wheat; bring GF grahams.",
+    "nut_free": "Check the chocolate label for nuts and 'may contain'."
+  }
 }

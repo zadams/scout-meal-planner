@@ -8,9 +8,6 @@
   "notes": [
     "Bulk hot chocolate mix made in the big Igloo: heat water in pots, mix in the Igloo, serve from the spigot. Skip mixes with mini marshmallows: they usually contain pork gelatin."
   ],
-  "prep": [
-    "T-30: Heat water (about 1 gal per ~16 cups); whisk mix into the Igloo with hot water."
-  ],
   "items": [
     {
       "key": "cocoa_mix",
@@ -24,5 +21,20 @@
       "adult": 0.3,
       "buffer": 0.1
     }
+  ],
+  "steps": [
+    {
+      "t": "T-30",
+      "text": "Heat water in pots (about 1 gallon per 16 cups). Whisk the mix into the big Igloo with the hot water ({cocoa_mix} for this meal)."
+    }
+  ],
+  "serving": [
+    "Serve from the Igloo spigot. Top off with cool water for younger kids so it isn't scalding."
+  ],
+  "food_safety": [
+    "Test the temperature before kids drink it."
+  ],
+  "cleanup": [
+    "Rinse the Igloo while warm."
   ]
 }

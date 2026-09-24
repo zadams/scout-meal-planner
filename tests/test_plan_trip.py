@@ -140,5 +140,41 @@ class TripOptions(unittest.TestCase):
         self.assertIn("cocoa_mix", got)
 
 
+class Handouts(unittest.TestCase):
+    ALL_REQS = {r: {"enabled": True, "count": 2} for r in ("vegetarian", "halal", "kosher", "gluten_free")}
+
+    def full_trip(self):
+        menus = [f[:-5] for f in os.listdir(os.path.join(ROOT, "skills", "scout-meal-planner", "menus"))
+                 if f.endswith(".json")] + ["sandwich_lunch"]
+        return {"trip": "t", "kids": 20, "adults": 20, "requirements": self.ALL_REQS,
+                "meals": [{"id": m, "menu": m, "group": f"G{i % 2}"} for i, m in enumerate(menus)]}
+
+    def test_every_placeholder_is_filled(self):
+        trip = plan_trip.normalize(self.full_trip())
+        for m in plan_trip.plan(trip, CATALOG)["meals"]:
+            text = " ".join([s["text"] for s in m["steps"]] + m["serving"] + m["cleanup"] + list(m["diet"].values()))
+            with self.subTest(meal=m["id"]):
+                self.assertNotRegex(text, r"\{[a-z_]+\}")
+
+    def test_conditional_steps(self):
+        on = plan_trip.normalize(self.full_trip())
+        off = plan_trip.normalize({**self.full_trip(), "requirements": {}})
+        kosher_steps = lambda t: [s for m in plan_trip.plan(t, CATALOG)["meals"]
+                                  for s in m["steps"] if "KOSHER" in s["text"]]
+        self.assertTrue(kosher_steps(on))
+        self.assertFalse(kosher_steps(off))
+
+    def test_one_packet_per_group(self):
+        import tempfile
+        trip = plan_trip.normalize(self.full_trip())
+        result = plan_trip.plan(trip, CATALOG)
+        with tempfile.TemporaryDirectory() as d:
+            paths = plan_trip.handouts.write_handouts(result, trip, CATALOG, d, plan_trip.fmt_qty)
+            self.assertEqual(sorted(os.path.basename(p) for p in paths), ["g0.html", "g1.html"])
+            text = open(paths[0]).read()
+            self.assertIn("Prep &amp; cooking", text)
+            self.assertIn("Shopping list", text)
+
+
 if __name__ == "__main__":
     unittest.main()

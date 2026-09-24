@@ -19,6 +19,11 @@ stores you actually use.
   one buyer group with hand-offs, and a leftover forecast (so no more bags of
   uneaten apples).
 
+- **Printable packets for each group:** menu, crew roles, special diets,
+  equipment checklist, a step-by-step prep and cooking countdown with real
+  quantities, serving line, food safety, cleanup, and that group's shopping
+  list with hand-offs (see `examples/handouts/`).
+
 Menus so far: s'mores, egg breakfast burritos, sandwich lunch, pasta dinner,
 coffee + breakfast bars. New menus are small JSON files.
 
@@ -42,7 +47,7 @@ Ask your agent to "plan meals for a weekend campout: 30 kids, 20 adults". Or run
 calculator directly:
 
 ```
-python3 skills/scout-meal-planner/scripts/plan_trip.py --profile examples/fall-campout.json
+python3 skills/scout-meal-planner/scripts/plan_trip.py --profile examples/fall-campout.json --handouts /tmp/handouts
 ```
 
 See `skills/scout-meal-planner/README.md` for install locations, and
