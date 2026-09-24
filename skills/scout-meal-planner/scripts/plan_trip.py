@@ -31,7 +31,7 @@ DEFAULT_FRUIT_MIX = {"clementine": 0.4, "banana": 0.3, "apple": 0.3}
 BIG_EATER_SHARE_OF_ADULT = 0.85  # a big eater's extra, as a fraction of an adult portion
 INTEGER_UNITS = {"egg", "packet", "bag", "plate", "bowl", "napkin", "bottle", "tortilla",
                  "cup", "bar", "sheet", "mallow", "can", "meal", "chip", "ring", "leaf",
-                 "slice", "onion", "pepper", "serving"}
+                 "slice", "onion", "pepper", "serving", "roll"}
 # Old sandwich_lunch.py "packs" keys -> catalog keys
 LEGACY_PACK_KEYS = {"pb_jar_oz": "peanut_butter", "jelly_jar_oz": "jelly",
                     "turkey_pack_lb": "turkey_deli", "cheese_pack_slices": "cheese_sliced",
@@ -110,6 +110,26 @@ def normalize(profile):
     return trip
 
 
+def load_menu(name, seen=()):
+    """Load a JSON menu and merge any menus it "include"s (e.g. hot_drinks)."""
+    if name in seen:
+        sys.exit(f"Menu include loop: {' -> '.join(seen + (name,))}")
+    path = os.path.join(SKILL, "menus", f"{name}.json")
+    if not os.path.exists(path):
+        sys.exit(f"No menu named {name!r} (looked for {path})")
+    menu = load_json(path)
+    for inc in menu.get("include", []):
+        merge_menu(menu, load_menu(inc, seen + (name,)))
+    return menu
+
+
+def merge_menu(menu, extra):
+    menu.setdefault("items", []).extend(extra.get("items", []))
+    for f in ("notes", "prep", "equipment"):
+        menu[f] = menu.get(f, []) + [x for x in extra.get(f, []) if x not in menu.get(f, [])]
+    menu.setdefault("extras", []).append(extra["name"])
+
+
 def template_needs(menu, ctx):
     """Raw needs from a JSON menu: list of (key, qty, buffer, loss, from_leftovers)."""
     out = []
@@ -148,27 +168,31 @@ def plan(trip, catalog):
         ctx = Context(trip, meal)
         mname = meal.get("menu") or meal.get("template")
         if mname == "sandwich_lunch":
-            menu = dict(sandwich.MENU)
+            menu = dict(sandwich.MENU, items=[])
             raw, notes = sandwich.needs(ctx, meal.get("options", {}))
             raw = [(k, q, b, ctx.prep_loss if l else 0, False) for k, q, b, l in raw]
         else:
-            path = os.path.join(SKILL, "menus", f"{mname}.json")
-            if not os.path.exists(path):
-                sys.exit(f"No menu named {mname!r} (looked for {path})")
-            menu = load_json(path)
-            notes = list(menu.get("notes", []))
-            kosher_alt = ctx.without_kosher() if menu.get("hot") else 0
-            raw = template_needs(menu, ctx)
-            if kosher_alt:
-                raw.append(("kosher_sealed_meal", kosher_alt, 0, 0, False))
-                notes.append(f"{kosher_alt} kosher eater(s) get a sealed certified meal; hot food from shared pots/griddles usually isn't kosher. Ask the families.")
+            menu = load_menu(mname)
+            notes, raw = [], []
+        for extra in meal.get("extras", []):
+            merge_menu(menu, load_menu(extra))
+        notes += menu.get("notes", [])
+        kosher_ctx = Context(trip, meal)
+        kosher_alt = kosher_ctx.without_kosher() if menu.get("hot") else 0
+        raw += template_needs(menu, kosher_ctx if kosher_alt else ctx)
+        if kosher_alt:
+            raw.append(("kosher_sealed_meal", kosher_alt, 0, 0, False))
+            notes.append(f"{kosher_alt} kosher eater(s) get a sealed certified meal; hot food from shared pots/griddles usually isn't kosher. Ask the families.")
+        if trip.get("mess_kits"):
+            raw = [r for r in raw if not items.get(r[0], {}).get("disposable")]
         for k, q, b, l, lo in raw:
             if k not in items:
                 sys.exit(f"Menu {mname!r} uses unknown ingredient {k!r}; add it to references/ingredients.json")
             if q > 0:
                 uses[k].append((idx, meal.get("group", "(unassigned)"), q, b, l, lo))
         meals_out.append({"id": meal.get("id", f"meal{idx+1}"), "day": meal.get("day", ""),
-                          "name": meal.get("name", menu["name"]), "menu": menu["name"],
+                          "name": meal.get("name", menu["name"]),
+                          "menu": " + ".join([menu["name"]] + menu.get("extras", [])),
                           "group": meal.get("group", "(unassigned)"), "people": round(ctx.people),
                           "equipment": menu.get("equipment", []), "notes": notes,
                           "prep": menu.get("prep", []), "line": menu.get("line", []),
@@ -189,7 +213,10 @@ def plan(trip, catalog):
         by_group = defaultdict(float)
         for _, grp, q, _, l, _ in regular:
             by_group[grp] += q * (1 + l)
-        buyer = max(by_group, key=lambda g: (by_group[g], -min(x[0] for x in regular if x[1] == g)))
+        if trip.get("shopping", "per_group") == "per_pack":
+            buyer = "Pack shopper"
+        else:
+            buyer = max(by_group, key=lambda g: (by_group[g], -min(x[0] for x in regular if x[1] == g)))
         info = items[key]
         pack = trip["packs"].get(key, info.get("pack"))
         unit = info["unit"]
@@ -202,6 +229,7 @@ def plan(trip, catalog):
                       "meals": [meals_out[i]["id"] for i in sorted({x[0] for x in u})],
                       "by_group": dict(by_group), "consumed": used, "from_leftovers": from_left,
                       "leftover": max(0, bought - used), "perishable": info.get("perishable", False),
+                      "staple": info.get("staple", False),
                       "check": info.get("check", [])}
 
     fruit = None
@@ -263,40 +291,68 @@ def report(result, trip, catalog):
         p("- Uses: " + "; ".join(f"{items[k]['name'].lower()} {fmt_qty(q, items[k]['unit'])}" for k, q in m["needs"]))
 
     p()
-    p("## Shopping list (all meals combined)")
-    order = ["warehouse", "grocery", "specialty", "supply"]
+    mode = trip.get("shopping", "per_group")
     stores = trip.get("stores", {})
     label = {"warehouse": " / ".join(stores.get("warehouse", [])) or "Warehouse club",
              "grocery": stores.get("grocery", "Grocery store"),
              "specialty": stores.get("specialty", "Specialty"),
              "supply": "Supplies (check the pack's supply bin first)"}
-    for st in order:
-        rows = [l for l in result["lines"] if l["store"] == st and l["key"] != "fruit"]
-        if st == "warehouse" and result["fruit"]:
-            rows.append(None)
-        if not rows:
-            continue
-        p()
-        p(f"**{label[st]}**")
-        p()
-        p("| Item | Need | Buy | Buyer | Used at |")
-        p("|---|---|---|---|---|")
-        for l in rows:
-            if l is None:
-                f = next(x for x in result["lines"] if x["key"] == "fruit")
-                for fr in result["fruit"]:
-                    p(f"| {fr['type']} | {fr['pieces']} | {fr['packs']} × {fr['pack_label']} | {f['buyer']} | {', '.join(f['meals'])} |")
-                continue
-            buy = f"{l['packs']} × {l['pack']} {l['pack_label']}" if l["packs"] else f"{fmt_qty(l['amount'], l['unit'])} {l['pack_label']}".strip()
-            p(f"| {l['name']} | {fmt_qty(l['amount'], l['unit'])} | {buy} | {l['buyer']} | {', '.join(l['meals'])} |")
 
-    shared = [l for l in result["lines"] if len(l["by_group"]) > 1]
-    if shared:
-        p()
-        p("## Shared items: one buyer, hand off the rest")
-        for l in shared:
-            others = [f"~{fmt_qty(q, l['unit'])} to {g}" for g, q in l["by_group"].items() if g != l["buyer"]]
-            p(f"- **{l['name']}**: {l['buyer']} buys all; hands {', '.join(others)}.")
+    def rows_for(lines):
+        out_rows = []
+        for l in lines:
+            if l["key"] == "fruit":
+                for fr in result["fruit"]:
+                    out_rows.append((l["store"], fr["type"], str(fr["pieces"]),
+                                     f"{fr['packs']} × {fr['pack_label']}", l))
+                continue
+            buy = f"{l['packs']} × {l['pack']} {l['pack_label']}" if l["packs"] \
+                else f"{fmt_qty(l['amount'], l['unit'])} {l['pack_label']}".strip()
+            name = l["name"] + (" *(staple: check chuck box)*" if l["staple"] else "")
+            out_rows.append((l["store"], name, fmt_qty(l["amount"], l["unit"]), buy, l))
+        return out_rows
+
+    def table(lines):
+        for st in ["warehouse", "grocery", "specialty", "supply"]:
+            rows = [r for r in rows_for(lines) if r[0] == st]
+            if not rows:
+                continue
+            p()
+            p(f"**{label[st]}**")
+            p()
+            p("| Item | Need | Buy | Used at |")
+            p("|---|---|---|---|")
+            for _, name, need, buy, l in rows:
+                p(f"| {name} | {need} | {buy} | {', '.join(l['meals'])} |")
+
+    if mode == "per_pack":
+        p("## Shopping list: one pack shopper, all meals combined")
+        table(result["lines"])
+    else:
+        p("## Shopping lists: one per group (all meals combined, then split by buyer)")
+        buyers = []
+        for m in result["meals"]:
+            if m["group"] not in buyers:
+                buyers.append(m["group"])
+        for b in buyers:
+            mine = [l for l in result["lines"] if l["buyer"] == b]
+            if not mine:
+                continue
+            p()
+            p(f"### {b}")
+            table(mine)
+
+        shared = [l for l in result["lines"] if len(l["by_group"]) > 1]
+        if shared:
+            p()
+            p("## Shared items: one buyer, hand off the rest")
+            for l in shared:
+                if l["staple"] or l["store"] == "supply":
+                    others = [g for g in l["by_group"] if g != l["buyer"]]
+                    p(f"- **{l['name']}**: {l['buyer']} buys; share with {', '.join(others)}.")
+                    continue
+                others = [f"~{fmt_qty(q, l['unit'])} to {g}" for g, q in l["by_group"].items() if g != l["buyer"]]
+                p(f"- **{l['name']}**: {l['buyer']} buys all; hands {', '.join(others)}.")
 
     served_later = [l for l in result["lines"] if l["from_leftovers"]]
     if served_later:

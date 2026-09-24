@@ -1,0 +1,11 @@
+{
+  "name": "Lemonade / Kool-Aid (bulk mix)",
+  "meal_type": "drink",
+  "equipment": ["2 x 5-gal drink coolers with spigots", "potable water"],
+  "notes": ["Pre-sweetened powdered mix: one ~82 oz canister makes ~34 qt. Mix in the coolers with camp water; keep one cooler of plain water too."],
+  "prep": ["T-15: Fill coolers with water and ice; stir in mix."],
+  "items": [
+    {"key": "drink_mix", "kid": 2, "adult": 1.5, "buffer": 0.15},
+    {"key": "cold_cups", "kid": 1.5, "adult": 1.5, "buffer": 0.1}
+  ]
+}

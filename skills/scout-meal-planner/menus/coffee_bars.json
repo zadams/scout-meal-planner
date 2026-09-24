@@ -1,23 +1,48 @@
 {
-  "name": "Coffee + breakfast bars (no cooking)",
+  "name": "Breakfast bars + leftover fruit, coffee/tea, hot chocolate (no cooking)",
   "meal_type": "breakfast",
   "hot": false,
-  "equipment": ["burner + kettle or percolator for coffee"],
+  "equipment": [
+    "burner + large kettle or pot for hot water"
+  ],
   "notes": [
-    "No cooking. Leftover fruit from earlier meals goes out here instead of buying more.",
+    "No cooking beyond hot water. Leftover fruit from earlier meals goes out here instead of buying more.",
     "Choose nut-free bars without gelatin (check labels) while allergy status is unknown."
   ],
   "prep": [
-    "T-30: Start coffee (percolator or pour-over, ~0.5 oz grounds per 12 oz cup).",
-    "T-10: Set out bars, leftover fruit, cups, creamer, sugar."
+    "T-20: Hot water on for coffee, tea and hot chocolate.",
+    "T-10: Set out bars, leftover fruit, packets."
   ],
   "items": [
-    {"key": "breakfast_bars", "kid": 1.5, "adult": 1.5, "main": true, "buffer": 0.15},
-    {"key": "coffee_ground", "kid": 0, "adult": 0.75, "buffer": 0.1},
-    {"key": "creamer_cups", "kid": 0, "adult": 1.5, "buffer": 0.1},
-    {"key": "sugar_packets", "kid": 0, "adult": 1, "buffer": 0.1},
-    {"key": "hot_cups", "kid": 0, "adult": 1.5, "buffer": 0.1},
-    {"key": "fruit", "kid": 1, "adult": 1, "buffer": 0, "from_leftovers": true},
-    {"key": "napkins", "kid": 1, "adult": 1, "buffer": 0}
+    {
+      "key": "breakfast_bars",
+      "kid": 1.5,
+      "adult": 1.5,
+      "main": true,
+      "buffer": 0.15
+    },
+    {
+      "key": "fruit",
+      "kid": 1,
+      "adult": 1,
+      "buffer": 0,
+      "from_leftovers": true
+    },
+    {
+      "key": "napkins",
+      "kid": 1,
+      "adult": 1,
+      "buffer": 0
+    },
+    {
+      "key": "paper_towels",
+      "kid": 0.01,
+      "adult": 0.01,
+      "buffer": 0.25
+    }
+  ],
+  "include": [
+    "hot_drinks",
+    "hot_cocoa"
   ]
 }

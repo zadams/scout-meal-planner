@@ -120,10 +120,13 @@ planner combine them:
   "packs": { "peanut_butter": 96, "cheese_sliced": 160, "onion": 10 },
   "fruit_mix": { "clementine": 0.4, "banana": 0.3, "apple": 0.3 },
   "on_hand": { "napkins": 500, "mustard_packets": 400 },
+  "mess_kits": true,
+  "shopping": "per_group",
   "meals": [
     { "id": "fri-smores",    "day": "Fri", "menu": "smores",             "group": "Group 1 – AOLs" },
     { "id": "sat-breakfast", "day": "Sat", "menu": "breakfast_burritos", "group": "Group 2" },
     { "id": "sat-lunch",     "day": "Sat", "menu": "sandwich_lunch",     "group": "Group 3",
+      "extras": ["cold_drink"],
       "options": { "pbj_share_kids": 0.7, "toppings": ["lettuce", "tomato", "pickles", "onion"] } },
     { "id": "sun-breakfast", "day": "Sun", "menu": "coffee_bars",        "group": "Group 1 – AOLs",
       "kids": 30 }
@@ -142,6 +145,15 @@ planner combine them:
   ingredient key. It's subtracted before buying.
 - **fruit_mix**: fruit is planned as generic servings, then split by this mix.
   That's the variety rule: no meal gets "all apples".
+- **mess_kits**: `true` when campers bring their own plates, bowls, cups and
+  utensils. Disposable items are then dropped (napkins and paper towels stay).
+- **shopping**: `"per_group"` (default) gives each group its own list, with one
+  buyer per shared item and hand-offs. `"per_pack"` gives one combined list for
+  a single shopper.
+- **extras**: add-on menus for a meal, usually drinks: `cold_drink` (bulk
+  lemonade/Kool-Aid), `hot_drinks` (coffee/tea packets + creamer, sugar,
+  sweetener), `hot_cocoa`. Menus can also `"include"` other menus
+  (`coffee_bars` includes hot drinks and cocoa).
 
 Run it:
 
@@ -194,7 +206,15 @@ automatically give kosher eaters a sealed certified meal.
 
 Available menus: `smores`, `breakfast_burritos`, `sandwich_lunch` (code, in
 `scripts/sandwich.py`, because its mix logic doesn't fit the data format),
-`pasta_dinner`, `coffee_bars`. Run `python3 -m unittest discover tests` from
+`pasta_dinner`, `coffee_bars`; add-ons `cold_drink`, `hot_drinks`,
+`hot_cocoa`.
+
+**Every menu must include what it takes to cook it,** not just the food:
+butter or oil, salt, pepper, seasonings, sauces, and paper towels (groups
+tend to run short). Mark pantry basics `"staple": true` in the catalog; the
+report tags them "check chuck box" so groups don't rebuy salt every trip.
+Drinks: coffee and tea as single-serve packets, always with creamer, sugar
+and a no-sugar sweetener. Run `python3 -m unittest discover tests` from
 the repo root after changing the planner or menus.
 
 Principles for new menus:

@@ -92,5 +92,30 @@ class Requirements(unittest.TestCase):
             run(p)
 
 
+class TripOptions(unittest.TestCase):
+    def test_mess_kits_skip_disposables(self):
+        p = {"kids": 10, "adults": 10, "meals": [{"menu": "pasta_dinner", "group": "A"}]}
+        self.assertIn("plates", run(p))
+        p["mess_kits"] = True
+        got = run(p)
+        self.assertNotIn("plates", got)
+        self.assertIn("napkins", got)  # mess kits don't include napkins
+
+    def test_shopping_mode(self):
+        p = two_meal_trip()
+        self.assertEqual({l["buyer"] for l in run(p).values()}, {"A", "B"})
+        p["shopping"] = "per_pack"
+        self.assertEqual({l["buyer"] for l in run(p).values()}, {"Pack shopper"})
+
+    def test_extras_and_includes(self):
+        p = {"kids": 10, "adults": 10, "meals": [
+            {"menu": "sandwich_lunch", "group": "A", "extras": ["cold_drink"]},
+            {"menu": "coffee_bars", "group": "B"}]}
+        got = run(p)
+        self.assertIn("drink_mix", got)       # meal-level extra
+        self.assertIn("coffee_packets", got)  # included by coffee_bars
+        self.assertIn("cocoa_packets", got)
+
+
 if __name__ == "__main__":
     unittest.main()

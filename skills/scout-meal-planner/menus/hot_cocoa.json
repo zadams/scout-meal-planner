@@ -1,0 +1,10 @@
+{
+  "name": "Hot chocolate (packets)",
+  "meal_type": "drink",
+  "equipment": ["burner + large kettle or pot for hot water"],
+  "notes": ["Hot chocolate packets for kids (some adults take one too). Skip mini-marshmallow varieties: they usually contain pork gelatin."],
+  "items": [
+    {"key": "cocoa_packets", "kid": 1, "adult": 0.3, "buffer": 0.15},
+    {"key": "hot_cups", "kid": 1, "adult": 0.3, "buffer": 0.1}
+  ]
+}

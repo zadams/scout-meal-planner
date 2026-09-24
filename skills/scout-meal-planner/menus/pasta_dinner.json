@@ -2,12 +2,20 @@
   "name": "Pasta with meat sauce and vegetarian sauce + small salad",
   "meal_type": "dinner",
   "hot": true,
-  "equipment": ["2-3 large stock pots for pasta", "2 pots for sauce (meat and veg, kept separate)", "burners", "colander", "ladles", "tongs"],
+  "equipment": [
+    "2-3 large stock pots for pasta",
+    "2 pots for sauce (meat and veg, kept separate)",
+    "burners",
+    "colander",
+    "ladles",
+    "tongs"
+  ],
   "notes": [
     "Meat sauce uses ground turkey, not beef, so no-beef families are covered. It is not halal or kosher.",
     "Vegetarian sauce is the planned main for vegetarian, halal and kosher eaters, plus ~25% of everyone else.",
     "Separate ladles for each sauce; label the pots. Cook the veg sauce first.",
-    "Salad is intentionally small: pre-washed greens, one or two dressings."
+    "Salad is intentionally small: pre-washed greens, one or two dressings.",
+    "Cooking staples: salt for the pasta water, oil for browning and tossing, Italian seasoning + garlic powder for both sauces."
   ],
   "prep": [
     "T-60: Water on to boil (large pots take 30+ min on camp burners).",
@@ -15,18 +23,160 @@
     "T-20: Cook pasta in batches; toss with a little oil so it doesn't clump.",
     "T-5: Salad greens into bowls, dressing on the side."
   ],
-  "line": ["plates/bowls", "pasta", "VEG sauce (own ladle)", "MEAT sauce (own ladle)", "parmesan", "salad + dressing", "napkins"],
+  "line": [
+    "plates/bowls (or mess kits)",
+    "pasta",
+    "VEG sauce (own ladle)",
+    "MEAT sauce (own ladle)",
+    "parmesan",
+    "salad + dressing",
+    "napkins"
+  ],
   "items": [
-    {"key": "pasta", "kid": 3, "adult": 4, "main": true, "buffer": 0.15, "loss": true},
-    {"key": "marinara", "kid": 3, "adult": 4.5, "main": true, "only": ["vegetarian", "halal", "kosher"], "walkups": false, "buffer": 0.15},
-    {"key": "marinara", "kid": 3, "adult": 4.5, "main": true, "share": 0.25, "except": ["vegetarian", "halal", "kosher"], "buffer": 0.15},
-    {"key": "marinara", "kid": 2.25, "adult": 3.4, "main": true, "share": 0.75, "except": ["vegetarian", "halal", "kosher"], "buffer": 0.1, "_doc": "base for meat sauce"},
-    {"key": "ground_turkey", "kid": 0.09, "adult": 0.14, "main": true, "share": 0.75, "except": ["vegetarian", "halal", "kosher"], "buffer": 0.08, "loss": true},
-    {"key": "onion", "kid": 0.03, "adult": 0.04, "share": 0.75, "except": ["vegetarian", "halal", "kosher"], "buffer": 0.08},
-    {"key": "parmesan", "kid": 0.2, "adult": 0.3, "share": 0.7, "buffer": 0.1},
-    {"key": "salad_greens", "kid": 0.75, "adult": 1.5, "share": 0.5, "buffer": 0.08},
-    {"key": "salad_dressing", "kid": 0.5, "adult": 0.75, "share": 0.5, "buffer": 0.1},
-    {"key": "plates", "kid": 1, "adult": 1, "buffer": 0.2},
-    {"key": "napkins", "kid": 2, "adult": 2, "buffer": 0}
+    {
+      "key": "pasta",
+      "kid": 3,
+      "adult": 4,
+      "main": true,
+      "buffer": 0.15,
+      "loss": true
+    },
+    {
+      "key": "marinara",
+      "kid": 3,
+      "adult": 4.5,
+      "main": true,
+      "only": [
+        "vegetarian",
+        "halal",
+        "kosher"
+      ],
+      "walkups": false,
+      "buffer": 0.15
+    },
+    {
+      "key": "marinara",
+      "kid": 3,
+      "adult": 4.5,
+      "main": true,
+      "share": 0.25,
+      "except": [
+        "vegetarian",
+        "halal",
+        "kosher"
+      ],
+      "buffer": 0.15
+    },
+    {
+      "key": "marinara",
+      "kid": 2.25,
+      "adult": 3.4,
+      "main": true,
+      "share": 0.75,
+      "except": [
+        "vegetarian",
+        "halal",
+        "kosher"
+      ],
+      "buffer": 0.1,
+      "_doc": "base for meat sauce"
+    },
+    {
+      "key": "ground_turkey",
+      "kid": 0.09,
+      "adult": 0.14,
+      "main": true,
+      "share": 0.75,
+      "except": [
+        "vegetarian",
+        "halal",
+        "kosher"
+      ],
+      "buffer": 0.08,
+      "loss": true
+    },
+    {
+      "key": "onion",
+      "kid": 0.03,
+      "adult": 0.04,
+      "share": 0.75,
+      "except": [
+        "vegetarian",
+        "halal",
+        "kosher"
+      ],
+      "buffer": 0.08
+    },
+    {
+      "key": "parmesan",
+      "kid": 0.2,
+      "adult": 0.3,
+      "share": 0.7,
+      "buffer": 0.1
+    },
+    {
+      "key": "salad_greens",
+      "kid": 0.75,
+      "adult": 1.5,
+      "share": 0.5,
+      "buffer": 0.08
+    },
+    {
+      "key": "salad_dressing",
+      "kid": 0.5,
+      "adult": 0.75,
+      "share": 0.5,
+      "buffer": 0.1
+    },
+    {
+      "key": "napkins",
+      "kid": 2,
+      "adult": 2,
+      "buffer": 0
+    },
+    {
+      "key": "salt",
+      "kid": 0.15,
+      "adult": 0.2,
+      "buffer": 0.1,
+      "_doc": "pasta water, ~0.75 oz per lb pasta"
+    },
+    {
+      "key": "cooking_oil",
+      "kid": 0.25,
+      "adult": 0.3,
+      "buffer": 0.1,
+      "_doc": "browning turkey + tossing pasta"
+    },
+    {
+      "key": "italian_seasoning",
+      "kid": 0.02,
+      "adult": 0.03,
+      "buffer": 0.1
+    },
+    {
+      "key": "garlic_powder",
+      "kid": 0.015,
+      "adult": 0.02,
+      "buffer": 0.1
+    },
+    {
+      "key": "black_pepper",
+      "kid": 0.003,
+      "adult": 0.005,
+      "buffer": 0.1
+    },
+    {
+      "key": "paper_towels",
+      "kid": 0.03,
+      "adult": 0.03,
+      "buffer": 0.25
+    },
+    {
+      "key": "plates",
+      "kid": 1,
+      "adult": 1,
+      "buffer": 0.2
+    }
   ]
 }

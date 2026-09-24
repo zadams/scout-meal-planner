@@ -52,20 +52,29 @@
     "apple": 0.3
   },
   "on_hand": {},
+  "mess_kits": true,
+  "shopping": "per_group",
   "meals": [
     {
       "id": "fri-smores",
       "day": "Fri",
       "name": "S'mores",
       "menu": "smores",
-      "group": "Group 1 – AOLs"
+      "group": "Group 1 – AOLs",
+      "extras": [
+        "hot_cocoa"
+      ]
     },
     {
       "id": "sat-breakfast",
       "day": "Sat",
       "name": "Breakfast",
       "menu": "breakfast_burritos",
-      "group": "Group 2 – Lions/Tigers/Wolves"
+      "group": "Group 2 – Lions/Tigers/Wolves",
+      "extras": [
+        "hot_drinks",
+        "hot_cocoa"
+      ]
     },
     {
       "id": "sat-lunch",
@@ -82,21 +91,30 @@
           "pickles",
           "onion"
         ]
-      }
+      },
+      "extras": [
+        "cold_drink"
+      ]
     },
     {
       "id": "sat-dinner",
       "day": "Sat",
       "name": "Dinner",
       "menu": "pasta_dinner",
-      "group": "Group 4 – AOLs"
+      "group": "Group 4 – AOLs",
+      "extras": [
+        "cold_drink"
+      ]
     },
     {
       "id": "sat-smores",
       "day": "Sat",
       "name": "S'mores",
       "menu": "smores",
-      "group": "Group 1 – AOLs"
+      "group": "Group 1 – AOLs",
+      "extras": [
+        "hot_cocoa"
+      ]
     },
     {
       "id": "sun-breakfast",

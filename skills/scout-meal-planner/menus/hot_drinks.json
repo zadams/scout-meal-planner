@@ -1,0 +1,15 @@
+{
+  "name": "Coffee + tea (packets)",
+  "meal_type": "drink",
+  "equipment": ["burner + large kettle or pot for hot water"],
+  "notes": ["Coffee and tea are single-serve packets: just add hot water. Creamer, sugar and no-sugar sweetener on the side."],
+  "prep": ["T-20: Hot water on; set out packets, creamer, sugar, sweetener, stir sticks/spoons."],
+  "items": [
+    {"key": "coffee_packets", "kid": 0, "adult": 1.5, "buffer": 0.15},
+    {"key": "tea_bags", "kid": 0, "adult": 1, "share": 0.25, "buffer": 0.15},
+    {"key": "creamer_cups", "kid": 0, "adult": 1.5, "buffer": 0.15},
+    {"key": "sugar_packets", "kid": 0, "adult": 1.2, "buffer": 0.15},
+    {"key": "sweetener_packets", "kid": 0, "adult": 0.5, "buffer": 0.15},
+    {"key": "hot_cups", "kid": 0, "adult": 1.5, "buffer": 0.1}
+  ]
+}
