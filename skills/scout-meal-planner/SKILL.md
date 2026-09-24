@@ -152,7 +152,7 @@ planner combine them:
   a single shopper.
 - **extras**: add-on menus for a meal, usually drinks: `cold_drink` (bulk
   lemonade/Kool-Aid), `hot_drinks` (coffee/tea packets + creamer, sugar,
-  sweetener), `hot_cocoa`. Menus can also `"include"` other menus
+  sweetener), `hot_cocoa` (bulk mix made in a large Igloo). Menus can also `"include"` other menus
   (`coffee_bars` includes hot drinks and cocoa).
 
 Run it:
@@ -199,7 +199,7 @@ Item fields: `kid`/`adult` = amount per person in the ingredient's unit;
 `buffer` = cushion rate; `loss` = `true` (trip prep_loss) or a rate such as
 0.5 for marshmallows; `only` / `except` = requirement groups it's for or not
 for (`vegetarian`, `halal`, `kosher`); `walkups: false` = walk-ups don't
-count; `from_leftovers` = served only from leftovers. Every `key` must exist
+count; `fixed` = a set quantity that doesn't scale with headcount; `from_leftovers` = served only from leftovers. Every `key` must exist
 in `references/ingredients.json`; add new ingredients there with their unit,
 pack size, store, `perishable`, and label `check`s. **Hot** menus
 automatically give kosher eaters a sealed certified meal.
@@ -210,8 +210,11 @@ Available menus: `smores`, `breakfast_burritos`, `sandwich_lunch` (code, in
 `hot_cocoa`.
 
 **Every menu must include what it takes to cook it,** not just the food:
-butter or oil, salt, pepper, seasonings, sauces, and paper towels (groups
-tend to run short). Mark pantry basics `"staple": true` in the catalog; the
+butter or oil, salt, pepper, seasonings, sauces, paper towels (groups
+tend to run short), and nitrile food-prep gloves (latex-free) in **adult and kid
+sizes**. Gloves come from the menu's `"crew": {"adults": 4, "kids": 4}` and
+`"glove_changes"` (crew × changes × 2 hands, +25%); a meal can override
+`"crew"` in the trip profile when a den brings more or fewer helpers. Mark pantry basics `"staple": true` in the catalog; the
 report tags them "check chuck box" so groups don't rebuy salt every trip.
 Drinks: coffee and tea as single-serve packets, always with creamer, sugar
 and a no-sugar sweetener. Run `python3 -m unittest discover tests` from

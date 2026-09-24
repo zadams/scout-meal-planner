@@ -101,6 +101,18 @@ class TripOptions(unittest.TestCase):
         self.assertNotIn("plates", got)
         self.assertIn("napkins", got)  # mess kits don't include napkins
 
+    def test_gloves_scale_with_crew_not_headcount(self):
+        small = run({"kids": 5, "adults": 5, "meals": [{"menu": "pasta_dinner", "group": "A"}]})
+        big = run({"kids": 50, "adults": 50, "meals": [{"menu": "pasta_dinner", "group": "A"}]})
+        for key in ("gloves_adult", "gloves_kid"):
+            self.assertEqual(small[key]["amount"], big[key]["amount"])
+
+    def test_meal_can_override_crew(self):
+        base = {"kids": 10, "adults": 10, "meals": [{"menu": "pasta_dinner", "group": "A"}]}
+        no_kids = {**base, "meals": [{"menu": "pasta_dinner", "group": "A", "crew": {"kids": 0}}]}
+        self.assertIn("gloves_kid", run(base))
+        self.assertNotIn("gloves_kid", run(no_kids))
+
     def test_shopping_mode(self):
         p = two_meal_trip()
         self.assertEqual({l["buyer"] for l in run(p).values()}, {"A", "B"})
@@ -114,7 +126,7 @@ class TripOptions(unittest.TestCase):
         got = run(p)
         self.assertIn("drink_mix", got)       # meal-level extra
         self.assertIn("coffee_packets", got)  # included by coffee_bars
-        self.assertIn("cocoa_packets", got)
+        self.assertIn("cocoa_mix", got)
 
 
 if __name__ == "__main__":

@@ -14,7 +14,8 @@
     "\"Lots of eggs\" per the scoutmaster: planned 2.5 eggs per kid, 3.5 per adult.",
     "Build-your-own: scrambled eggs, shredded cheese, peppers/onions, salsa. No meat, so it is pork- and beef-free and works for vegetarians.",
     "Ask about egg allergies; a scout with one needs a separate plan.",
-    "Cooking staples: butter for the eggs, cooking spray for the griddle, salt, pepper, hot sauce on the line."
+    "Cooking staples: butter for the eggs, cooking spray for the griddle, salt, pepper, hot sauce on the line.",
+    "Crew: Young scouts (K-2nd) help with fruit and serving; adults run the griddles."
   ],
   "prep": [
     "T-45: Dice onions and peppers; crack and whisk eggs in batches of ~5 dozen.",
@@ -133,5 +134,13 @@
       "adult": 1,
       "buffer": 0.2
     }
-  ]
+  ],
+  "crew": {
+    "adults": 4,
+    "kids": 4
+  },
+  "glove_changes": {
+    "adults": 4,
+    "kids": 2
+  }
 }

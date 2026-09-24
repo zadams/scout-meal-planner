@@ -31,7 +31,7 @@ DEFAULT_FRUIT_MIX = {"clementine": 0.4, "banana": 0.3, "apple": 0.3}
 BIG_EATER_SHARE_OF_ADULT = 0.85  # a big eater's extra, as a fraction of an adult portion
 INTEGER_UNITS = {"egg", "packet", "bag", "plate", "bowl", "napkin", "bottle", "tortilla",
                  "cup", "bar", "sheet", "mallow", "can", "meal", "chip", "ring", "leaf",
-                 "slice", "onion", "pepper", "serving", "roll"}
+                 "slice", "onion", "pepper", "serving", "roll", "glove"}
 # Old sandwich_lunch.py "packs" keys -> catalog keys
 LEGACY_PACK_KEYS = {"pb_jar_oz": "peanut_butter", "jelly_jar_oz": "jelly",
                     "turkey_pack_lb": "turkey_deli", "cheese_pack_slices": "cheese_sliced",
@@ -137,7 +137,9 @@ def template_needs(menu, ctx):
         kid, adult = it.get("kid", 0), it.get("adult", 0)
         avg = (kid + adult) / 2
         share = it.get("share", 1.0)
-        if "only" in it:
+        if "fixed" in it:  # scales with the prep crew, not the headcount
+            q = it["fixed"]
+        elif "only" in it:
             q = sum(ctx.req(g) for g in it["only"]) * avg
         else:
             q = ctx.kids * kid + ctx.adults * adult
@@ -183,6 +185,14 @@ def plan(trip, catalog):
         if kosher_alt:
             raw.append(("kosher_sealed_meal", kosher_alt, 0, 0, False))
             notes.append(f"{kosher_alt} kosher eater(s) get a sealed certified meal; hot food from shared pots/griddles usually isn't kosher. Ask the families.")
+        crew = {**menu.get("crew", {}), **meal.get("crew", {})}
+        changes = menu.get("glove_changes", {})
+        for who, key in (("adults", "gloves_adult"), ("kids", "gloves_kid")):
+            if crew.get(who):  # crew x glove changes x 2 hands, +25% for tears
+                raw.append((key, crew[who] * changes.get(who, 3) * 2, 0.25, 0, False))
+        if crew:
+            notes.append("Prep crew: " + ", ".join(f"{n} {w}" for w, n in crew.items() if n)
+                         + " (gloves sized to this; override with the meal's \"crew\").")
         if trip.get("mess_kits"):
             raw = [r for r in raw if not items.get(r[0], {}).get("disposable")]
         for k, q, b, l, lo in raw:

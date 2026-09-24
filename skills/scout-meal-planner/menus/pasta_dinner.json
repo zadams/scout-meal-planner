@@ -15,7 +15,8 @@
     "Vegetarian sauce is the planned main for vegetarian, halal and kosher eaters, plus ~25% of everyone else.",
     "Separate ladles for each sauce; label the pots. Cook the veg sauce first.",
     "Salad is intentionally small: pre-washed greens, one or two dressings.",
-    "Cooking staples: salt for the pasta water, oil for browning and tossing, Italian seasoning + garlic powder for both sauces."
+    "Cooking staples: salt for the pasta water, oil for browning and tossing, Italian seasoning + garlic powder for both sauces.",
+    "Crew: AOL scouts help with salad, serving and cleanup; adults handle boiling water."
   ],
   "prep": [
     "T-60: Water on to boil (large pots take 30+ min on camp burners).",
@@ -178,5 +179,13 @@
       "adult": 1,
       "buffer": 0.2
     }
-  ]
+  ],
+  "crew": {
+    "adults": 4,
+    "kids": 6
+  },
+  "glove_changes": {
+    "adults": 3,
+    "kids": 2
+  }
 }

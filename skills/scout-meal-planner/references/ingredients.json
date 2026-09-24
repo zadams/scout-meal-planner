@@ -440,17 +440,6 @@
    "pack_label": "ct box",
    "store": "warehouse"
   },
-  "cocoa_packets": {
-   "name": "Hot chocolate packets",
-   "unit": "packet",
-   "pack": 50,
-   "pack_label": "ct box",
-   "store": "warehouse",
-   "check": [
-    "kosher",
-    "gelatin"
-   ]
-  },
   "drink_mix": {
    "name": "Drink mix, pre-sweetened (lemonade / Kool-Aid)",
    "unit": "serving",
@@ -521,6 +510,31 @@
    "staple": true,
    "check": [
     "kosher"
+   ]
+  },
+  "gloves_adult": {
+   "name": "Food-prep gloves, adult (nitrile, latex-free)",
+   "unit": "glove",
+   "pack": 100,
+   "pack_label": "ct box (M and L)",
+   "store": "warehouse"
+  },
+  "gloves_kid": {
+   "name": "Food-prep gloves, kid size (nitrile, latex-free)",
+   "unit": "glove",
+   "pack": 100,
+   "pack_label": "ct box (kids / XS; verify availability)",
+   "store": "grocery"
+  },
+  "cocoa_mix": {
+   "name": "Hot chocolate mix, bulk",
+   "unit": "serving",
+   "pack": 70,
+   "pack_label": "8-oz servings per ~4 lb canister (verify)",
+   "store": "warehouse",
+   "check": [
+    "kosher",
+    "gelatin"
    ]
   }
  },

@@ -7,41 +7,46 @@ Requirements on: vegetarian 10, halal 5, kosher 3
 ## Meals
 
 ### Fri S'mores
-*S'mores + Hot chocolate (packets)* · **Group 1 – AOLs** · planned for ~83
+*S'mores + Hot chocolate (bulk, in the big Igloo)* · **Group 1 – AOLs** · planned for ~83
 - Kids go wild: planned ~3.5 s'mores per kid, ~1.5 per adult, per night.
 - Marshmallows carry a +50% burn/drop allowance; grahams +15% for breakage.
 - Vegan (gelatin-free) marshmallows go in a separate, labeled bag for vegetarian, halal and kosher eaters. Regular marshmallows are usually pork gelatin.
-- Hot chocolate packets for kids (some adults take one too). Skip mini-marshmallow varieties: they usually contain pork gelatin.
-- Equipment: campfire, pack's reusable roasting skewers (bring them; no purchase), wet wipes, burner + large kettle or pot for hot water
+- Bulk hot chocolate mix made in the big Igloo: heat water in pots, mix in the Igloo, serve from the spigot. Skip mixes with mini marshmallows: they usually contain pork gelatin.
+- Equipment: campfire, pack's reusable roasting skewers (bring them; no purchase), wet wipes, large Igloo beverage cooler for hot chocolate, burners + large pots to heat water
 - Prep T-15: Open graham boxes and break bars into squares on a tray; set out both marshmallow bags, the vegan one labeled.
 - Prep T-0: An adult runs the fire line; hand out marshmallows 2 at a time so bags don't disappear into the fire.
-- Uses: graham crackers 215 sheets; marshmallows (regular) 170 mallows; vegan marshmallows (gelatin-free, kosher) 45 mallows; milk chocolate bars (1.55 oz) 72 bars; napkins 123 napkins; paper towels 2 rolls; hot chocolate packets 53 packets
+- Prep T-30: Heat water (about 1 gal per ~16 cups); whisk mix into the Igloo with hot water.
+- Uses: graham crackers 215 sheets; marshmallows (regular) 170 mallows; vegan marshmallows (gelatin-free, kosher) 45 mallows; milk chocolate bars (1.55 oz) 72 bars; napkins 123 napkins; paper towels 2 rolls; hot chocolate mix, bulk 53 servings
 
 ### Sat Breakfast
-*Egg breakfast burritos + fruit + Coffee + tea (packets) + Hot chocolate (packets)* · **Group 2 – Lions/Tigers/Wolves** · planned for ~83
+*Egg breakfast burritos + fruit + Coffee + tea (packets) + Hot chocolate (bulk, in the big Igloo)* · **Group 2 – Lions/Tigers/Wolves** · planned for ~83
 - "Lots of eggs" per the scoutmaster: planned 2.5 eggs per kid, 3.5 per adult.
 - Build-your-own: scrambled eggs, shredded cheese, peppers/onions, salsa. No meat, so it is pork- and beef-free and works for vegetarians.
 - Ask about egg allergies; a scout with one needs a separate plan.
 - Cooking staples: butter for the eggs, cooking spray for the griddle, salt, pepper, hot sauce on the line.
+- Crew: Young scouts (K-2nd) help with fruit and serving; adults run the griddles.
 - Coffee and tea are single-serve packets: just add hot water. Creamer, sugar and no-sugar sweetener on the side.
-- Hot chocolate packets for kids (some adults take one too). Skip mini-marshmallow varieties: they usually contain pork gelatin.
+- Bulk hot chocolate mix made in the big Igloo: heat water in pots, mix in the Igloo, serve from the spigot. Skip mixes with mini marshmallows: they usually contain pork gelatin.
 - 3 kosher eater(s) get a sealed certified meal; hot food from shared pots/griddles usually isn't kosher. Ask the families.
-- Equipment: griddles, burners, spatulas, large bowls + whisks, cutting boards + knives, foil or a covered pan for holding, burner + large kettle or pot for hot water
+- Prep crew: 4 adults, 4 kids (gloves sized to this; override with the meal's "crew").
+- Equipment: griddles, burners, spatulas, large bowls + whisks, cutting boards + knives, foil or a covered pan for holding, burner + large kettle or pot for hot water, large Igloo beverage cooler for hot chocolate, burners + large pots to heat water
 - Line: plates (or mess kits) → tortillas → eggs (spoon) → peppers & onions → cheese → salsa → hot sauce → fruit → napkins
 - Prep T-45: Dice onions and peppers; crack and whisk eggs in batches of ~5 dozen.
 - Prep T-30: Griddles on; saute peppers/onions first, then scramble eggs in batches into a covered pan.
 - Prep T-10: Warm tortillas on the griddle edge; set out cheese, salsa, fruit.
 - Prep T-20: Hot water on; set out packets, creamer, sugar, sweetener, stir sticks/spoons.
-- Uses: eggs 265 eggs; burrito tortillas (10") 133 tortillas; shredded cheese 70.4 oz; onions 3 onions; bell peppers 3 peppers; salsa 48.4 oz; cooking spray / oil 2 cans; whole fruit 80 servings; napkins 160 napkins; butter 1.1 lb; salt 2.8 oz; black pepper 0.5 oz; hot sauce 4.1 oz; paper towels 2 rolls; instant coffee packets 62 packets; tea bags 10 bags; creamer singles 62 cups; sugar packets 50 packets; sweetener packets (no-sugar) 21 packets; hot chocolate packets 51 packets; sealed kosher-certified meal (hot-meal alternative) 3 meals
+- Prep T-30: Heat water (about 1 gal per ~16 cups); whisk mix into the Igloo with hot water.
+- Uses: eggs 265 eggs; burrito tortillas (10") 133 tortillas; shredded cheese 70.4 oz; onions 3 onions; bell peppers 3 peppers; salsa 48.4 oz; cooking spray / oil 2 cans; whole fruit 80 servings; napkins 160 napkins; butter 1.1 lb; salt 2.8 oz; black pepper 0.5 oz; hot sauce 4.1 oz; paper towels 2 rolls; instant coffee packets 62 packets; tea bags 10 bags; creamer singles 62 cups; sugar packets 50 packets; sweetener packets (no-sugar) 21 packets; hot chocolate mix, bulk 51 servings; sealed kosher-certified meal (hot-meal alternative) 3 meals; food-prep gloves, adult (nitrile, latex-free) 32 gloves; food-prep gloves, kid size (nitrile, latex-free) 16 gloves
 
 ### Sat Lunch
 *Sandwich lunch (PB&J + build-your-own deli) + chips + fruit + Lemonade / Kool-Aid (bulk mix)* · **Group 3 – Bears/Webelos** · planned for ~83
 - Sandwiches: 75 PB&J + 34 turkey + 18 veg (hummus + cheese) + 9 halal + 6 kosher (no cheese)
 - Toppings: lettuce, tomato, pickles, onion
 - Pre-sweetened powdered mix: one ~82 oz canister makes ~34 qt. Mix in the coolers with camp water; keep one cooler of plain water too.
+- Prep crew: 5 adults, 6 kids (gloves sized to this; override with the meal's "crew").
 - Equipment: 2 prep tables, foil pans + lids, tongs, bowls for toppings, 2 x 5-gal drink coolers with spigots, potable water
 - Prep T-15: Fill coolers with water and ice; stir in mix.
-- Uses: sandwich bread 283 slices; peanut butter 93.6 oz; grape jelly 59.9 oz; deli turkey, sliced 5.2 lb; halal deli turkey 1.4 lb; kosher deli turkey (sealed) 0.9 lb; sliced cheese 101 slices; hummus (plain) 18.4 oz; lettuce, pre-washed 67 leaves; tomatoes 33 slices; dill pickle chips 100 chips; onions 2 onions; mayo packets 50 packets; mustard packets 50 packets; chips, snack bags 83 bags; whole fruit 83 servings; napkins 249 napkins; paper towels 2 rolls; sandwich bags + labels 15 bags; drink mix, pre-sweetened (lemonade / kool-aid) 144 servings
+- Uses: sandwich bread 283 slices; peanut butter 93.6 oz; grape jelly 59.9 oz; deli turkey, sliced 5.2 lb; halal deli turkey 1.4 lb; kosher deli turkey (sealed) 0.9 lb; sliced cheese 101 slices; hummus (plain) 18.4 oz; lettuce, pre-washed 67 leaves; tomatoes 33 slices; dill pickle chips 100 chips; onions 2 onions; mayo packets 50 packets; mustard packets 50 packets; chips, snack bags 83 bags; whole fruit 83 servings; napkins 249 napkins; paper towels 2 rolls; food-prep gloves, adult (nitrile, latex-free) 44 gloves; sandwich bags + labels 15 bags; drink mix, pre-sweetened (lemonade / kool-aid) 144 servings; food-prep gloves, kid size (nitrile, latex-free) 36 gloves
 
 ### Sat Dinner
 *Pasta with meat sauce and vegetarian sauce + small salad + Lemonade / Kool-Aid (bulk mix)* · **Group 4 – AOLs** · planned for ~83
@@ -50,8 +55,10 @@ Requirements on: vegetarian 10, halal 5, kosher 3
 - Separate ladles for each sauce; label the pots. Cook the veg sauce first.
 - Salad is intentionally small: pre-washed greens, one or two dressings.
 - Cooking staples: salt for the pasta water, oil for browning and tossing, Italian seasoning + garlic powder for both sauces.
+- Crew: AOL scouts help with salad, serving and cleanup; adults handle boiling water.
 - Pre-sweetened powdered mix: one ~82 oz canister makes ~34 qt. Mix in the coolers with camp water; keep one cooler of plain water too.
 - 3 kosher eater(s) get a sealed certified meal; hot food from shared pots/griddles usually isn't kosher. Ask the families.
+- Prep crew: 4 adults, 6 kids (gloves sized to this; override with the meal's "crew").
 - Equipment: 2-3 large stock pots for pasta, 2 pots for sauce (meat and veg, kept separate), burners, colander, ladles, tongs, 2 x 5-gal drink coolers with spigots, potable water
 - Line: plates/bowls (or mess kits) → pasta → VEG sauce (own ladle) → MEAT sauce (own ladle) → parmesan → salad + dressing → napkins
 - Prep T-60: Water on to boil (large pots take 30+ min on camp burners).
@@ -59,30 +66,32 @@ Requirements on: vegetarian 10, halal 5, kosher 3
 - Prep T-20: Cook pasta in batches; toss with a little oil so it doesn't clump.
 - Prep T-5: Salad greens into bowls, dressing on the side.
 - Prep T-15: Fill coolers with water and ice; stir in mix.
-- Uses: pasta, dry 308.6 oz; marinara sauce, jarred 281.7 oz; ground turkey 6.4 lb; onions 2 onions; grated parmesan 14.1 oz; salad greens, pre-washed 45.5 oz; salad dressing 25.2 oz; napkins 160 napkins; salt 14.1 oz; olive / vegetable oil 22.1 oz; italian seasoning 2.0 oz; garlic powder 1.4 oz; black pepper 0.3 oz; paper towels 2 rolls; drink mix, pre-sweetened (lemonade / kool-aid) 139 servings; sealed kosher-certified meal (hot-meal alternative) 3 meals
+- Uses: pasta, dry 308.6 oz; marinara sauce, jarred 281.7 oz; ground turkey 6.4 lb; onions 2 onions; grated parmesan 14.1 oz; salad greens, pre-washed 45.5 oz; salad dressing 25.2 oz; napkins 160 napkins; salt 14.1 oz; olive / vegetable oil 22.1 oz; italian seasoning 2.0 oz; garlic powder 1.4 oz; black pepper 0.3 oz; paper towels 2 rolls; drink mix, pre-sweetened (lemonade / kool-aid) 139 servings; sealed kosher-certified meal (hot-meal alternative) 3 meals; food-prep gloves, adult (nitrile, latex-free) 24 gloves; food-prep gloves, kid size (nitrile, latex-free) 24 gloves
 
 ### Sat S'mores
-*S'mores + Hot chocolate (packets)* · **Group 1 – AOLs** · planned for ~83
+*S'mores + Hot chocolate (bulk, in the big Igloo)* · **Group 1 – AOLs** · planned for ~83
 - Kids go wild: planned ~3.5 s'mores per kid, ~1.5 per adult, per night.
 - Marshmallows carry a +50% burn/drop allowance; grahams +15% for breakage.
 - Vegan (gelatin-free) marshmallows go in a separate, labeled bag for vegetarian, halal and kosher eaters. Regular marshmallows are usually pork gelatin.
-- Hot chocolate packets for kids (some adults take one too). Skip mini-marshmallow varieties: they usually contain pork gelatin.
-- Equipment: campfire, pack's reusable roasting skewers (bring them; no purchase), wet wipes, burner + large kettle or pot for hot water
+- Bulk hot chocolate mix made in the big Igloo: heat water in pots, mix in the Igloo, serve from the spigot. Skip mixes with mini marshmallows: they usually contain pork gelatin.
+- Equipment: campfire, pack's reusable roasting skewers (bring them; no purchase), wet wipes, large Igloo beverage cooler for hot chocolate, burners + large pots to heat water
 - Prep T-15: Open graham boxes and break bars into squares on a tray; set out both marshmallow bags, the vegan one labeled.
 - Prep T-0: An adult runs the fire line; hand out marshmallows 2 at a time so bags don't disappear into the fire.
-- Uses: graham crackers 215 sheets; marshmallows (regular) 170 mallows; vegan marshmallows (gelatin-free, kosher) 45 mallows; milk chocolate bars (1.55 oz) 72 bars; napkins 123 napkins; paper towels 2 rolls; hot chocolate packets 53 packets
+- Prep T-30: Heat water (about 1 gal per ~16 cups); whisk mix into the Igloo with hot water.
+- Uses: graham crackers 215 sheets; marshmallows (regular) 170 mallows; vegan marshmallows (gelatin-free, kosher) 45 mallows; milk chocolate bars (1.55 oz) 72 bars; napkins 123 napkins; paper towels 2 rolls; hot chocolate mix, bulk 53 servings
 
 ### Sun Breakfast
-*Breakfast bars + leftover fruit, coffee/tea, hot chocolate (no cooking) + Coffee + tea (packets) + Hot chocolate (packets)* · **Group 1 – AOLs** · planned for ~83
+*Breakfast bars + leftover fruit, coffee/tea, hot chocolate (no cooking) + Coffee + tea (packets) + Hot chocolate (bulk, in the big Igloo)* · **Group 1 – AOLs** · planned for ~83
 - No cooking beyond hot water. Leftover fruit from earlier meals goes out here instead of buying more.
 - Choose nut-free bars without gelatin (check labels) while allergy status is unknown.
 - Coffee and tea are single-serve packets: just add hot water. Creamer, sugar and no-sugar sweetener on the side.
-- Hot chocolate packets for kids (some adults take one too). Skip mini-marshmallow varieties: they usually contain pork gelatin.
-- Equipment: burner + large kettle or pot for hot water
+- Bulk hot chocolate mix made in the big Igloo: heat water in pots, mix in the Igloo, serve from the spigot. Skip mixes with mini marshmallows: they usually contain pork gelatin.
+- Equipment: burner + large kettle or pot for hot water, large Igloo beverage cooler for hot chocolate, burners + large pots to heat water
 - Prep T-20: Hot water on for coffee, tea and hot chocolate.
 - Prep T-10: Set out bars, leftover fruit, packets.
 - Prep T-20: Hot water on; set out packets, creamer, sugar, sweetener, stir sticks/spoons.
-- Uses: breakfast bars 135 bars; whole fruit 83 servings; napkins 83 napkins; paper towels 1 roll; instant coffee packets 64 packets; tea bags 11 bags; creamer singles 64 cups; sugar packets 52 packets; sweetener packets (no-sugar) 22 packets; hot chocolate packets 53 packets
+- Prep T-30: Heat water (about 1 gal per ~16 cups); whisk mix into the Igloo with hot water.
+- Uses: breakfast bars 135 bars; whole fruit 83 servings; napkins 83 napkins; paper towels 1 roll; instant coffee packets 64 packets; tea bags 11 bags; creamer singles 64 cups; sugar packets 52 packets; sweetener packets (no-sugar) 22 packets; hot chocolate mix, bulk 53 servings
 
 ## Shopping lists: one per group (all meals combined, then split by buyer)
 
@@ -95,7 +104,7 @@ Requirements on: vegetarian 10, halal 5, kosher 3
 | Graham crackers | 531 sheets | 10 × 54 sheet box (~3 lb) | fri-smores, sat-smores |
 | Marshmallows (regular) | 548 mallows | 7 × 90 ct bag (~24 oz) | fri-smores, sat-smores |
 | Milk chocolate bars (1.55 oz) | 162 bars | 5 × 36 ct box | fri-smores, sat-smores |
-| Hot chocolate packets | 218 packets | 5 × 50 ct box | fri-smores, sat-breakfast, sat-smores, sun-breakfast |
+| Hot chocolate mix, bulk | 218 servings | 4 × 70 8-oz servings per ~4 lb canister (verify) | fri-smores, sat-breakfast, sat-smores, sun-breakfast |
 | Instant coffee packets | 137 packets | 2 × 100 ct box (verify count) | sat-breakfast, sun-breakfast |
 | Tea bags | 23 bags | 1 × 100 ct box | sat-breakfast, sun-breakfast |
 | Creamer singles | 137 cups | 1 × 180 ct box | sat-breakfast, sun-breakfast |
@@ -148,6 +157,7 @@ Requirements on: vegetarian 10, halal 5, kosher 3
 | Clementines | 148 | 5 × 5 lb bag (~30) | sat-breakfast, sat-lunch, sun-breakfast |
 | Bananas | 56 | 7 × 3 lb bunch (~9) | sat-breakfast, sat-lunch, sun-breakfast |
 | Apples | 56 | 5 × 5 lb bag (~13) | sat-breakfast, sat-lunch, sun-breakfast |
+| Food-prep gloves, adult (nitrile, latex-free) | 110 gloves | 2 × 100 ct box (M and L) | sat-breakfast, sat-lunch, sat-dinner |
 | Sandwich bread | 342 slices | 18 × 20 loaf | sat-lunch |
 | Peanut butter | 113.1 oz | 2 × 96 oz jar | sat-lunch |
 | Grape jelly | 72.4 oz | 2 × 60 oz jar | sat-lunch |
@@ -161,6 +171,12 @@ Requirements on: vegetarian 10, halal 5, kosher 3
 | Mustard packets | 51 packets | 1 × 500 ct box | sat-lunch |
 | Chips, snack bags | 92 bags | 2 × 50 ct variety pack | sat-lunch |
 | Drink mix, pre-sweetened (lemonade / Kool-Aid) | 306 servings | 3 × 136 8-oz servings per ~82 oz canister (~34 qt) | sat-lunch, sat-dinner |
+
+**Kroger**
+
+| Item | Need | Buy | Used at |
+|---|---|---|---|
+| Food-prep gloves, kid size (nitrile, latex-free) | 85 gloves | 1 × 100 ct box (kids / XS; verify availability) | sat-breakfast, sat-lunch, sat-dinner |
 
 **local halal/kosher grocer**
 
@@ -195,7 +211,7 @@ Requirements on: vegetarian 10, halal 5, kosher 3
 ## Shared items: one buyer, hand off the rest
 - **Napkins**: Group 1 – AOLs buys; share with Group 2 – Lions/Tigers/Wolves, Group 3 – Bears/Webelos, Group 4 – AOLs.
 - **Paper towels**: Group 1 – AOLs buys; share with Group 2 – Lions/Tigers/Wolves, Group 3 – Bears/Webelos, Group 4 – AOLs.
-- **Hot chocolate packets**: Group 1 – AOLs buys all; hands ~51 packets to Group 2 – Lions/Tigers/Wolves.
+- **Hot chocolate mix, bulk**: Group 1 – AOLs buys all; hands ~51 servings to Group 2 – Lions/Tigers/Wolves.
 - **Onions**: Group 2 – Lions/Tigers/Wolves buys all; hands ~2 onions to Group 3 – Bears/Webelos, ~2 onions to Group 4 – AOLs.
 - **Whole fruit**: Group 3 – Bears/Webelos buys all; hands ~80 servings to Group 2 – Lions/Tigers/Wolves.
 - **Salt**: Group 4 – AOLs buys; share with Group 2 – Lions/Tigers/Wolves.
@@ -206,6 +222,8 @@ Requirements on: vegetarian 10, halal 5, kosher 3
 - **Sugar packets**: Group 1 – AOLs buys all; hands ~50 packets to Group 2 – Lions/Tigers/Wolves.
 - **Sweetener packets (no-sugar)**: Group 1 – AOLs buys all; hands ~21 packets to Group 2 – Lions/Tigers/Wolves.
 - **Sealed kosher-certified meal (hot-meal alternative)**: Group 2 – Lions/Tigers/Wolves buys all; hands ~3 meals to Group 4 – AOLs.
+- **Food-prep gloves, adult (nitrile, latex-free)**: Group 3 – Bears/Webelos buys all; hands ~32 gloves to Group 2 – Lions/Tigers/Wolves, ~24 gloves to Group 4 – AOLs.
+- **Food-prep gloves, kid size (nitrile, latex-free)**: Group 3 – Bears/Webelos buys all; hands ~16 gloves to Group 2 – Lions/Tigers/Wolves, ~24 gloves to Group 4 – AOLs.
 - **Drink mix, pre-sweetened (lemonade / Kool-Aid)**: Group 3 – Bears/Webelos buys all; hands ~139 servings to Group 4 – AOLs.
 
 ## Served from leftovers (nothing extra bought)
@@ -236,6 +254,7 @@ Mostly pack rounding plus the one-per-trip cushion. Big percentages here are wor
 - Olive / vegetable oil: ~45.9 oz (208% over expected use)
 - Italian seasoning: ~4.0 oz (198% over expected use)
 - Hot sauce: ~7.9 oz (190% over expected use)
+- Food-prep gloves, adult (nitrile, latex-free): ~100 gloves (100% over expected use)
 - Salsa: ~47.6 oz (98% over expected use)
 - Sugar packets: ~99 packets (97% over expected use)
 - Peanut butter: ~93.7 oz (95% over expected use)
@@ -249,17 +268,18 @@ Mostly pack rounding plus the one-per-trip cushion. Big percentages here are wor
 - Salad dressing: ~10.8 oz (43% over expected use)
 - Breakfast bars: ~57 bars (43% over expected use)
 - Creamer singles: ~53 cups (42% over expected use)
+- Hot chocolate mix, bulk: ~70 servings (34% over expected use)
+- Food-prep gloves, kid size (nitrile, latex-free): ~24 gloves (32% over expected use)
 - Marshmallows (regular): ~121 mallows (24% over expected use)
 - Sandwich bread: ~63 slices (21% over expected use)
 - Chips, snack bags: ~17 bags (20% over expected use)
 - Milk chocolate bars (1.55 oz): ~29 bars (20% over expected use)
-- Hot chocolate packets: ~40 packets (19% over expected use)
 - Pasta, dry: ~59.9 oz (18% over expected use)
 - Vegan marshmallows (gelatin-free, kosher): ~15 mallows (11% over expected use)
 - Marinara sauce, jarred: ~30.3 oz (11% over expected use)
 - Graham crackers: ~46 sheets (9% over expected use)
 
 ## Label checks
-- Kosher enabled: look for a kosher symbol (OU, OK, Star-K, ...). → Graham crackers, Milk chocolate bars (1.55 oz), Hot chocolate packets, Burrito tortillas (10"), Shredded cheese, Salsa, Butter, Hot sauce, Tea bags, Sandwich bread, Peanut butter, Grape jelly, Sliced cheese, Hummus (plain), Dill pickle chips, Mayo packets, Mustard packets, Drink mix, pre-sweetened (lemonade / Kool-Aid), Pasta, dry, Marinara sauce, jarred, Grated parmesan, Salad dressing, Breakfast bars
-- Regular gelatin is usually pork-derived: not OK for vegetarian, halal, kosher, or no-pork eaters. → Marshmallows (regular), Hot chocolate packets, Breakfast bars
+- Kosher enabled: look for a kosher symbol (OU, OK, Star-K, ...). → Graham crackers, Milk chocolate bars (1.55 oz), Hot chocolate mix, bulk, Burrito tortillas (10"), Shredded cheese, Salsa, Butter, Hot sauce, Tea bags, Sandwich bread, Peanut butter, Grape jelly, Sliced cheese, Hummus (plain), Dill pickle chips, Mayo packets, Mustard packets, Drink mix, pre-sweetened (lemonade / Kool-Aid), Pasta, dry, Marinara sauce, jarred, Grated parmesan, Salad dressing, Breakfast bars
+- Regular gelatin is usually pork-derived: not OK for vegetarian, halal, kosher, or no-pork eaters. → Marshmallows (regular), Hot chocolate mix, bulk, Breakfast bars
 - Nut status unknown or nut-free: check for nut / tree-nut ingredients and 'may contain' warnings. → Milk chocolate bars (1.55 oz), Hummus (plain), Chips, snack bags, Breakfast bars

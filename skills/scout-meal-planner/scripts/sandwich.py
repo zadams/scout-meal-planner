@@ -24,6 +24,9 @@ MENU = {
     "meal_type": "lunch",
     "hot": False,
     "equipment": ["2 prep tables", "foil pans + lids", "tongs", "bowls for toppings"],
+    # Bears/Webelos-age scouts can work the PB&J assembly line with adults
+    "crew": {"adults": 5, "kids": 6},
+    "glove_changes": {"adults": 4, "kids": 3},
 }
 
 
@@ -77,6 +80,8 @@ def needs(ctx, opts):
     n.append(("plates", people, 0.2, False))
     n.append(("napkins", people * 3, 0, False))
     n.append(("paper_towels", people * 0.02, 0.25, False))
+    if halal_sw or kosher_sw:  # fresh pairs for the kosher and halal batches
+        n.append(("gloves_adult", 4, 0.25, False))
     if halal_sw or kosher_sw:
         n.append(("sandwich_bags", halal_sw + kosher_sw, 0, False))
     if opts.get("water_bottles"):

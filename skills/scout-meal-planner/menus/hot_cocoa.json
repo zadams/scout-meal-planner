@@ -1,10 +1,28 @@
 {
-  "name": "Hot chocolate (packets)",
+  "name": "Hot chocolate (bulk, in the big Igloo)",
   "meal_type": "drink",
-  "equipment": ["burner + large kettle or pot for hot water"],
-  "notes": ["Hot chocolate packets for kids (some adults take one too). Skip mini-marshmallow varieties: they usually contain pork gelatin."],
+  "equipment": [
+    "large Igloo beverage cooler for hot chocolate",
+    "burners + large pots to heat water"
+  ],
+  "notes": [
+    "Bulk hot chocolate mix made in the big Igloo: heat water in pots, mix in the Igloo, serve from the spigot. Skip mixes with mini marshmallows: they usually contain pork gelatin."
+  ],
+  "prep": [
+    "T-30: Heat water (about 1 gal per ~16 cups); whisk mix into the Igloo with hot water."
+  ],
   "items": [
-    {"key": "cocoa_packets", "kid": 1, "adult": 0.3, "buffer": 0.15},
-    {"key": "hot_cups", "kid": 1, "adult": 0.3, "buffer": 0.1}
+    {
+      "key": "cocoa_mix",
+      "kid": 1,
+      "adult": 0.3,
+      "buffer": 0.15
+    },
+    {
+      "key": "hot_cups",
+      "kid": 1,
+      "adult": 0.3,
+      "buffer": 0.1
+    }
   ]
 }
