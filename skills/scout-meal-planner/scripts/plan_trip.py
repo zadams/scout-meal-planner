@@ -30,7 +30,7 @@ REQUIREMENTS = ["vegetarian", "halal", "kosher", "gluten_free", "nut_free"]
 DEFAULT_FRUIT_MIX = {"clementine": 0.4, "banana": 0.3, "apple": 0.3}
 BIG_EATER_SHARE_OF_ADULT = 0.85  # a big eater's extra, as a fraction of an adult portion
 INTEGER_UNITS = {"egg", "packet", "bag", "plate", "bowl", "napkin", "bottle", "tortilla",
-                 "cup", "bar", "sheet", "mallow", "can", "meal", "chip", "ring", "leaf",
+                 "cup", "bar", "sheet", "mallow", "can", "meal", "chip", "ring", "leaf", "container",
                  "slice", "onion", "pepper", "serving", "roll", "glove"}
 # Old sandwich_lunch.py "packs" keys -> catalog keys
 LEGACY_PACK_KEYS = {"pb_jar_oz": "peanut_butter", "jelly_jar_oz": "jelly",
@@ -208,6 +208,23 @@ def plan(trip, catalog):
                           "prep": menu.get("prep", []), "line": menu.get("line", []),
                           "needs": merge_needs(raw)})
 
+    # Carry-forward: leftovers from one meal that a later meal can use. Each
+    # gets a labeled gallon bag; later purchases are NOT reduced for it.
+    reuse = catalog.get("reuse", {})
+    carry = []
+    for i, m in enumerate(meals_out):
+        for key, _ in m["needs"]:
+            for j in range(i + 1, len(meals_out)):
+                later = dict(meals_out[j]["needs"])
+                hit = next((t for t in reuse.get(key, []) if t in later), None)
+                if hit:
+                    carry.append({"from": m["id"], "to": meals_out[j]["id"], "item": items[key]["name"],
+                                  "into": items[hit]["name"], "group": m["group"]})
+                    uses["zip_gallon"].append((i, m["group"], 1, 0, 0, False))
+                    break
+    if carry or "zip_gallon" in uses or "storage_containers" in uses:
+        uses["label_tape"].append((0, meals_out[0]["group"], 1, 0, 0, False))
+
     on_hand = trip.get("on_hand", {})
     lines = OrderedDict()
     for key in sorted(uses, key=lambda k: min(u[0] for u in uses[k])):
@@ -256,7 +273,7 @@ def plan(trip, catalog):
             fruit.append({"type": t["name"], "pieces": math.ceil(pieces), "packs": n, "pack_label": t["pack_label"]})
         f["leftover"] = max(0, servings_bought - f["consumed"])
     return {"trip": trip.get("trip", trip.get("event", "Trip")), "meals": meals_out,
-            "lines": list(lines.values()), "fruit": fruit}
+            "lines": list(lines.values()), "fruit": fruit, "carry": carry}
 
 
 PLURAL = {"leaf": "leaves"}
@@ -363,6 +380,15 @@ def report(result, trip, catalog):
                     continue
                 others = [f"~{fmt_qty(q, l['unit'])} to {g}" for g, q in l["by_group"].items() if g != l["buyer"]]
                 p(f"- **{l['name']}**: {l['buyer']} buys all; hands {', '.join(others)}.")
+
+    if result.get("carry"):
+        p()
+        p("## Carry leftovers forward (bag, label, date, back in the cooler)")
+        p("Bonus only: purchases don't count on these, since the cushion may get eaten.")
+        for c in result["carry"]:
+            same = c["item"] == c["into"]
+            p(f"- After **{c['from']}** ({c['group']}): {c['item'].lower()} → **{c['to']}**"
+              + ("" if same else f" ({c['into'].lower()})"))
 
     served_later = [l for l in result["lines"] if l["from_leftovers"]]
     if served_later:

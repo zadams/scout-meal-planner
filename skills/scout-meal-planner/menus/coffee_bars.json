@@ -7,7 +7,8 @@
   ],
   "notes": [
     "No cooking beyond hot water. Leftover fruit from earlier meals goes out here instead of buying more.",
-    "Choose nut-free bars without gelatin (check labels) while allergy status is unknown."
+    "Choose nut-free bars without gelatin (check labels) while allergy status is unknown.",
+    "Storage: bag opened bars and leftover fruit to go home."
   ],
   "prep": [
     "T-20: Hot water on for coffee, tea and hot chocolate.",
@@ -39,6 +40,11 @@
       "kid": 0.01,
       "adult": 0.01,
       "buffer": 0.25
+    },
+    {
+      "key": "zip_gallon",
+      "fixed": 1,
+      "buffer": 0
     }
   ],
   "include": [

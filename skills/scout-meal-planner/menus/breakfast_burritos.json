@@ -15,7 +15,8 @@
     "Build-your-own: scrambled eggs, shredded cheese, peppers/onions, salsa. No meat, so it is pork- and beef-free and works for vegetarians.",
     "Ask about egg allergies; a scout with one needs a separate plan.",
     "Cooking staples: butter for the eggs, cooking spray for the griddle, salt, pepper, hot sauce on the line.",
-    "Crew: Young scouts (K-2nd) help with fruit and serving; adults run the griddles."
+    "Crew: Young scouts (K-2nd) help with fruit and serving; adults run the griddles.",
+    "Storage: bag opened tortillas, shredded cheese and leftover diced onions/peppers; label, date, back in the cooler."
   ],
   "prep": [
     "T-45: Dice onions and peppers; crack and whisk eggs in batches of ~5 dozen.",
@@ -133,6 +134,16 @@
       "kid": 1,
       "adult": 1,
       "buffer": 0.2
+    },
+    {
+      "key": "zip_gallon",
+      "fixed": 3,
+      "buffer": 0
+    },
+    {
+      "key": "zip_quart",
+      "fixed": 2,
+      "buffer": 0
     }
   ],
   "crew": {

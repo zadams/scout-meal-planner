@@ -536,6 +536,34 @@
     "kosher",
     "gelatin"
    ]
+  },
+  "zip_gallon": {
+   "name": "Zip-top bags, gallon",
+   "unit": "bag",
+   "pack": 75,
+   "pack_label": "ct box",
+   "store": "warehouse"
+  },
+  "zip_quart": {
+   "name": "Zip-top bags, quart",
+   "unit": "bag",
+   "pack": 100,
+   "pack_label": "ct box",
+   "store": "warehouse"
+  },
+  "storage_containers": {
+   "name": "Disposable storage containers + lids",
+   "unit": "container",
+   "pack": 20,
+   "pack_label": "ct pack",
+   "store": "warehouse"
+  },
+  "label_tape": {
+   "name": "Masking tape + marker (label and date leftovers)",
+   "unit": "roll",
+   "pack": null,
+   "pack_label": "",
+   "store": "supply"
   }
  },
  "fruit_types": {
@@ -563,5 +591,40 @@
   "kosher": "Kosher enabled: look for a kosher symbol (OU, OK, Star-K, ...).",
   "nuts": "Nut status unknown or nut-free: check for nut / tree-nut ingredients and 'may contain' warnings.",
   "gelatin": "Regular gelatin is usually pork-derived: not OK for vegetarian, halal, kosher, or no-pork eaters."
+ },
+ "reuse": {
+  "_doc": "Leftover carry-forward for perishables and things cut at camp (shelf-stable items just stay in their own packaging): ingredient -> ingredients in LATER meals it can go into. Each match is listed and gets a labeled gallon bag; later purchases are not reduced (the cushion may get eaten).",
+  "fruit": [
+   "fruit"
+  ],
+  "onion": [
+   "onion"
+  ],
+  "bell_pepper": [
+   "bell_pepper",
+   "salad_greens"
+  ],
+  "lettuce": [
+   "salad_greens",
+   "lettuce"
+  ],
+  "tomato": [
+   "salad_greens",
+   "tomato"
+  ],
+  "cheese_shredded": [
+   "cheese_shredded"
+  ],
+  "cheese_sliced": [
+   "cheese_sliced"
+  ],
+  "turkey_deli": [
+   "turkey_deli",
+   "ground_turkey"
+  ],
+  "salad_greens": [
+   "salad_greens",
+   "lettuce"
+  ]
  }
 }

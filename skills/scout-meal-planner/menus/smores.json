@@ -10,7 +10,8 @@
   "notes": [
     "Kids go wild: planned ~3.5 s'mores per kid, ~1.5 per adult, per night.",
     "Marshmallows carry a +50% burn/drop allowance; grahams +15% for breakage.",
-    "Vegan (gelatin-free) marshmallows go in a separate, labeled bag for vegetarian, halal and kosher eaters. Regular marshmallows are usually pork gelatin."
+    "Vegan (gelatin-free) marshmallows go in a separate, labeled bag for vegetarian, halal and kosher eaters. Regular marshmallows are usually pork gelatin.",
+    "Storage: bag opened grahams, chocolate and marshmallows in gallon bags and put them in a sealed bin or car overnight (critters)."
   ],
   "prep": [
     "T-15: Open graham boxes and break bars into squares on a tray; set out both marshmallow bags, the vegan one labeled.",
@@ -72,6 +73,11 @@
       "adult": 0.02,
       "buffer": 0.25,
       "_doc": "sticky hands"
+    },
+    {
+      "key": "zip_gallon",
+      "fixed": 3,
+      "buffer": 0
     }
   ]
 }

@@ -113,6 +113,17 @@ class TripOptions(unittest.TestCase):
         self.assertIn("gloves_kid", run(base))
         self.assertNotIn("gloves_kid", run(no_kids))
 
+    def test_carry_forward_perishables_only(self):
+        p = {"kids": 20, "adults": 20, "meals": [
+            {"id": "b", "menu": "breakfast_burritos", "group": "A"},
+            {"id": "l", "menu": "sandwich_lunch", "group": "B", "options": {"toppings": ["lettuce", "tomato"]}},
+            {"id": "d", "menu": "pasta_dinner", "group": "C"}]}
+        trip = plan_trip.normalize(p)
+        carry = {(c["from"], c["to"], c["item"]) for c in plan_trip.plan(trip, CATALOG)["carry"]}
+        self.assertIn(("l", "d", "Lettuce, pre-washed"), carry)  # lunch lettuce -> dinner salad
+        self.assertIn(("b", "d", "Onions"), carry)              # breakfast onions -> meat sauce
+        self.assertFalse(any("Chips" in c[2] for c in carry))   # shelf-stable: no bag
+
     def test_shopping_mode(self):
         p = two_meal_trip()
         self.assertEqual({l["buyer"] for l in run(p).values()}, {"A", "B"})

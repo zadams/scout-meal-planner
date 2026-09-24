@@ -80,6 +80,9 @@ def needs(ctx, opts):
     n.append(("plates", people, 0.2, False))
     n.append(("napkins", people * 3, 0, False))
     n.append(("paper_towels", people * 0.02, 0.25, False))
+    # opened turkey, cheese, bread, sliced toppings; a container for hummus/sliced tomatoes
+    n.append(("zip_gallon", 4, 0, False))
+    n.append(("storage_containers", 1, 0, False))
     if halal_sw or kosher_sw:  # fresh pairs for the kosher and halal batches
         n.append(("gloves_adult", 4, 0.25, False))
     if halal_sw or kosher_sw:
@@ -95,5 +98,6 @@ def needs(ctx, opts):
     if kosher_sw:
         mix.append(f"{kosher_sw:.0f} kosher (no cheese)")
     notes = ["Sandwiches: " + " + ".join(mix),
+             "Storage: bag opened turkey, cheese, bread and sliced toppings; label, date, back in the cooler.",
              "Toppings: " + ", ".join(t.replace("_", " ") for t in toppings)]
     return n, notes

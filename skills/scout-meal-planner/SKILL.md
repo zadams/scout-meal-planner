@@ -175,6 +175,11 @@ How the planner combines meals:
   purchase. The report says how much should be left for them.
 - Each shared item gets **one buyer** (the group using the most), with
   hand-off amounts for the other groups.
+- **Carry-forwards:** when a later meal uses something an earlier one leaves
+  over (breakfast onions → dinner sauce, lunch lettuce/tomato → dinner
+  salad, fruit → the next meal), the report lists it and adds a labeled
+  gallon bag. Matches come from the `reuse` map in `ingredients.json`.
+  Purchases are not reduced for them.
 - Leftovers are forecast in two lists: **waste risk** (perishables; shrink
   packs or on-hand) and **keeps for next trip** (record them in `on_hand`
   next time).
@@ -211,8 +216,9 @@ Available menus: `smores`, `breakfast_burritos`, `sandwich_lunch` (code, in
 
 **Every menu must include what it takes to cook it,** not just the food:
 butter or oil, salt, pepper, seasonings, sauces, paper towels (groups
-tend to run short), and nitrile food-prep gloves (latex-free) in **adult and kid
-sizes**. Gloves come from the menu's `"crew": {"adults": 4, "kids": 4}` and
+tend to run short), **storage for leftovers** (zip-top bags and a few disposable
+containers as `fixed` items for opened packages), and nitrile food-prep
+gloves (latex-free) in **adult and kid sizes**. Gloves come from the menu's `"crew": {"adults": 4, "kids": 4}` and
 `"glove_changes"` (crew × changes × 2 hands, +25%); a meal can override
 `"crew"` in the trip profile when a den brings more or fewer helpers. Mark pantry basics `"staple": true` in the catalog; the
 report tags them "check chuck box" so groups don't rebuy salt every trip.

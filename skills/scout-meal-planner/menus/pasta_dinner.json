@@ -16,7 +16,8 @@
     "Separate ladles for each sauce; label the pots. Cook the veg sauce first.",
     "Salad is intentionally small: pre-washed greens, one or two dressings.",
     "Cooking staples: salt for the pasta water, oil for browning and tossing, Italian seasoning + garlic powder for both sauces.",
-    "Crew: AOL scouts help with salad, serving and cleanup; adults handle boiling water."
+    "Crew: AOL scouts help with salad, serving and cleanup; adults handle boiling water.",
+    "Storage: cool leftover sauce and pasta fast (shallow containers, into the cooler within 2 hours) or send it home; bag unused salad greens."
   ],
   "prep": [
     "T-60: Water on to boil (large pots take 30+ min on camp burners).",
@@ -178,6 +179,16 @@
       "kid": 1,
       "adult": 1,
       "buffer": 0.2
+    },
+    {
+      "key": "storage_containers",
+      "fixed": 3,
+      "buffer": 0
+    },
+    {
+      "key": "zip_gallon",
+      "fixed": 2,
+      "buffer": 0
     }
   ],
   "crew": {
