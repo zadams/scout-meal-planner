@@ -1,6 +1,6 @@
 ---
 name: scout-meal-planner
-description: Plan a group camping meal (Scouts, youth groups, family camps) from a headcount — menu, per-item quantities, dietary coverage with on/off requirement toggles (vegetarian, halal, kosher, gluten-free, nut-free), a DIY buffet service line, and a store-by-store shopping list for the planner's own warehouse club and grocery stores. Use when asked to plan, scale, or shop for a group or camp meal, or to price-check the grocery list.
+description: Plan the meals and snacks for a group camping trip (Scouts, youth groups, family camps) from a headcount — menus, quantities, dietary coverage with on/off toggles (vegetarian, halal, kosher, gluten-free, nut-free), service lines, prep timelines, and ONE combined shopping list across all meals so supplies aren't duplicated, with buyer assignments per group and a leftover forecast. Use when asked to plan, scale, or shop for any camp meal, snack, or whole trip, or to price-check the grocery list.
 ---
 
 # Scout Meal Planner
@@ -20,8 +20,12 @@ working directory.
 Required:
 - **Headcount split**: kids vs. adults (siblings count as kids). For Cub Scouts
   (ages 5–10), a 5-year-old eats a lot less than a 10-year-old.
-- **Meal + event**: which meal, and what happens before it (a hike or run
-  means hungrier people and more water; set `"hungry": true`).
+- **Every meal and snack on the trip**, with the group (den/patrol) that
+  cooks and buys each one. Plan them together (step 3), even if you were
+  only asked about one. Note what happens before a meal (a hike or run means
+  hungrier people; set `"hungry": true` on that meal).
+- **Cooking gear** on site (griddles, burners, pots, Dutch ovens). This
+  decides which menus are realistic.
 - **Dietary needs**: which requirements apply and roughly how many people
   (see the toggles in step 3).
 - **Allergies: always ask about peanut/tree nut explicitly.** Never assume
@@ -40,7 +44,7 @@ Defaults (state them in the plan, adjustable):
 - **Prep timing**: all prep happens at camp, immediately before the meal,
   unless the planner says otherwise. Plan crew size and a T-minus timeline
   around that (see step 4).
-- Cooking gear on site: none, so plan a cold meal. Cooler + ice: yes.
+- Cooler + ice: yes.
 - Budget: under ~$5/person for lunch.
 
 If the user recalls past-trip patterns (e.g. "PB&J was popular with kids"),
@@ -93,18 +97,18 @@ Requirement rules (apply only the ones that are enabled):
   If so, enable the toggle and follow `references/religious-diets.md`. If both
   are off, don't read that file or add certified items.
 
-## 3. Compute quantities
+## 3. Plan the whole trip, not one meal at a time
 
-Record the event in a profile, `plans/<event>.json`. Requirements are on/off
-toggles, so a planner can rerun the same event as needs change:
+Planning meals separately stacks a cushion on every meal and rounds each up
+to whole packs. That is how a trip ends with far too many apples. Always put
+every meal of the trip in **one profile**, `plans/<trip>.json`, and let the
+planner combine them:
 
 ```json
 {
-  "event": "Fall campout lunch",
+  "trip": "Fall campout",
   "kids": 35, "adults": 38,
-  "walkups": 10, "big_eaters": 8, "prep_loss": 0.05,
-  "pbj_share_kids": 0.7, "pbj_share_adults": 0.35,
-  "hungry": false, "water_bottles": 0,
+  "walkups": 10, "big_eaters": 8, "prep_loss": 0.05, "hungry": false,
   "requirements": {
     "vegetarian":  { "enabled": true,  "count": 10, "estimated": true },
     "halal":       { "enabled": true,  "count": 5,  "estimated": true },
@@ -112,35 +116,91 @@ toggles, so a planner can rerun the same event as needs change:
     "gluten_free": { "enabled": false },
     "nut_free":    { "enabled": false }
   },
-  "stores": {
-    "warehouse": ["Costco", "Sam's Club"],
-    "grocery": "Kroger",
-    "specialty": "local halal/kosher grocer"
-  },
-  "toppings": ["lettuce", "tomato", "pickles"],
-  "packs": { "pb_jar_oz": 48, "cheese_pack_slices": 80 }
+  "stores": { "warehouse": ["Sam's Club"], "grocery": "Kroger", "specialty": "local halal/kosher grocer" },
+  "packs": { "peanut_butter": 96, "cheese_sliced": 160, "onion": 10 },
+  "fruit_mix": { "clementine": 0.4, "banana": 0.3, "apple": 0.3 },
+  "on_hand": { "napkins": 500, "mustard_packets": 400 },
+  "meals": [
+    { "id": "fri-smores",    "day": "Fri", "menu": "smores",             "group": "Group 1 – AOLs" },
+    { "id": "sat-breakfast", "day": "Sat", "menu": "breakfast_burritos", "group": "Group 2" },
+    { "id": "sat-lunch",     "day": "Sat", "menu": "sandwich_lunch",     "group": "Group 3",
+      "options": { "pbj_share_kids": 0.7, "toppings": ["lettuce", "tomato", "pickles", "onion"] } },
+    { "id": "sun-breakfast", "day": "Sun", "menu": "coffee_bars",        "group": "Group 1 – AOLs",
+      "kids": 30 }
+  ]
 }
 ```
 
-- An enabled requirement must have a count; a guess is fine if marked `"estimated"`.
-- `stores` only changes the wording of the output; the math is store-independent.
-- `packs` overrides default pack sizes once real sizes are known. Defaults
-  and keys are in `DEFAULT_PACKS` in the script.
+- **Headcount**: plan for everyone at every meal unless the planner says a
+  meal is smaller; a meal can override `kids`, `adults`, `walkups`, `hungry`.
+- **Requirements**: an enabled requirement must have a count; a guess is fine
+  if marked `"estimated"`.
+- **group**: who cooks and buys for that meal (den, patrol, family).
+- **packs**: real pack sizes by ingredient key, once known. Defaults live in
+  `references/ingredients.json`.
+- **on_hand**: what's already in the supply bin or left from the last trip, by
+  ingredient key. It's subtracted before buying.
+- **fruit_mix**: fruit is planned as generic servings, then split by this mix.
+  That's the variety rule: no meal gets "all apples".
 
-Run the calculator:
+Run it:
 
 ```
-python3 scripts/sandwich_lunch.py --profile plans/<event>.json
+python3 scripts/plan_trip.py --profile plans/<trip>.json          # report
+python3 scripts/plan_trip.py --profile plans/<trip>.json --json   # data
 ```
 
-CLI flags override the profile for quick what-ifs, e.g. `--halal 0`,
-`--nut-free`, `--kids 40` (`--help` lists them all).
+CLI flags override the profile for what-ifs (`--kosher 0`, `--kids 40`,
+`--nut-free`; see `--help`). A profile without `meals` is treated as a single
+sandwich lunch (the original format).
 
-The calculator covers sandwich lunches. For other meals, reason from
-`references/portions.md` with the same principles:
+How the planner combines meals:
+- Each ingredient is summed across meals, gets **one cushion sized to its
+  biggest single meal** (not one per meal), then is rounded to packs once.
+- Expected losses (burnt marshmallows, dropped bread) count as *used*, not
+  as leftovers.
+- Menu items marked `"from_leftovers"` (e.g. Sunday fruit) never add to the
+  purchase. The report says how much should be left for them.
+- Each shared item gets **one buyer** (the group using the most), with
+  hand-off amounts for the other groups.
+- Leftovers are forecast in two lists: **waste risk** (perishables; shrink
+  packs or on-hand) and **keeps for next trip** (record them in `on_hand`
+  next time).
+
+### Menus
+
+`menus/*.json` are data files; add a meal type by adding one:
+
+```json
+{
+  "name": "Pancake breakfast", "meal_type": "breakfast", "hot": true,
+  "equipment": ["griddles"], "notes": ["..."], "prep": ["T-30: ..."], "line": ["plates", "..."],
+  "items": [
+    { "key": "pancake_mix", "kid": 2.5, "adult": 3.5, "main": true, "buffer": 0.15, "loss": true },
+    { "key": "fruit", "kid": 1, "adult": 1, "buffer": 0.25 }
+  ]
+}
+```
+
+Item fields: `kid`/`adult` = amount per person in the ingredient's unit;
+`share` = fraction of people who take it; `main` = big eaters get extra;
+`buffer` = cushion rate; `loss` = `true` (trip prep_loss) or a rate such as
+0.5 for marshmallows; `only` / `except` = requirement groups it's for or not
+for (`vegetarian`, `halal`, `kosher`); `walkups: false` = walk-ups don't
+count; `from_leftovers` = served only from leftovers. Every `key` must exist
+in `references/ingredients.json`; add new ingredients there with their unit,
+pack size, store, `perishable`, and label `check`s. **Hot** menus
+automatically give kosher eaters a sealed certified meal.
+
+Available menus: `smores`, `breakfast_burritos`, `sandwich_lunch` (code, in
+`scripts/sandwich.py`, because its mix logic doesn't fit the data format),
+`pasta_dinner`, `coffee_bars`. Run `python3 -m unittest discover tests` from
+the repo root after changing the planner or menus.
+
+Principles for new menus:
 - Bias **up** on shelf-stable items; leftovers go to the next campout.
 - Stay **tight** on perishables; leftovers get tossed.
-- Round to real pack sizes, then sanity-check total cost.
+- Put generous-but-realistic loss rates where kids are involved (s'mores).
 
 ## 4. Plan the service line
 
@@ -189,15 +249,16 @@ Without browser tools, skip this step and leave prices marked as estimates.
 
 ## 7. Output
 
-Write the plan to `plans/<event>.md`, next to its profile:
+Write the plan to `plans/<trip>.md`, next to its profile, using the
+planner's report as the source of numbers:
 1. **Summary**: headcount, requirements on (flag estimated counts), menu in
    one line, estimated total cost and $/person, recalc command.
 2. **Dietary coverage**: group → what they eat. Enabled requirements only;
    disabled ones get no rows, items, or prep steps.
-3. **Quantities**: item, amount, pack count.
-4. **Shopping list by store**: checkboxes grouped by the planner's stores.
-5. **Prep timeline**: T-minus schedule before the meal, with crew size.
-6. **Service line**: ordered list plus supplies (tongs, gloves, labels).
-7. **Open questions**: every estimate or assumption to confirm.
+3. **Per meal**: group, menu, equipment, prep, line.
+4. **Shopping list by store**: one combined list with buyer group per item,
+   plus hand-offs for shared items.
+5. **Leftover forecast**: waste-risk items first.
+6. **Open questions**: every estimate or assumption to confirm.
 
 Keep it to one page a volunteer could print.

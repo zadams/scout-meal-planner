@@ -1,0 +1,109 @@
+{
+  "trip": "Fall campout",
+  "kids": 35,
+  "adults": 38,
+  "walkups": 10,
+  "big_eaters": 8,
+  "prep_loss": 0.05,
+  "hungry": false,
+  "requirements": {
+    "vegetarian": {
+      "enabled": true,
+      "count": 10,
+      "estimated": true
+    },
+    "halal": {
+      "enabled": true,
+      "count": 5,
+      "estimated": true
+    },
+    "kosher": {
+      "enabled": true,
+      "count": 3,
+      "estimated": true
+    },
+    "gluten_free": {
+      "enabled": false,
+      "count": 0
+    },
+    "nut_free": {
+      "enabled": false
+    }
+  },
+  "stores": {
+    "warehouse": [
+      "Sam's Club"
+    ],
+    "grocery": "Kroger",
+    "specialty": "local halal/kosher grocer"
+  },
+  "packs": {
+    "peanut_butter": 96,
+    "jelly": 60,
+    "turkey_deli": 1.375,
+    "cheese_sliced": 160,
+    "chips": 50,
+    "hummus": 32,
+    "onion": 10
+  },
+  "fruit_mix": {
+    "clementine": 0.4,
+    "banana": 0.3,
+    "apple": 0.3
+  },
+  "on_hand": {},
+  "meals": [
+    {
+      "id": "fri-smores",
+      "day": "Fri",
+      "name": "S'mores",
+      "menu": "smores",
+      "group": "Group 1 – AOLs"
+    },
+    {
+      "id": "sat-breakfast",
+      "day": "Sat",
+      "name": "Breakfast",
+      "menu": "breakfast_burritos",
+      "group": "Group 2 – Lions/Tigers/Wolves"
+    },
+    {
+      "id": "sat-lunch",
+      "day": "Sat",
+      "name": "Lunch",
+      "menu": "sandwich_lunch",
+      "group": "Group 3 – Bears/Webelos",
+      "options": {
+        "pbj_share_kids": 0.7,
+        "pbj_share_adults": 0.35,
+        "toppings": [
+          "lettuce",
+          "tomato",
+          "pickles",
+          "onion"
+        ]
+      }
+    },
+    {
+      "id": "sat-dinner",
+      "day": "Sat",
+      "name": "Dinner",
+      "menu": "pasta_dinner",
+      "group": "Group 4 – AOLs"
+    },
+    {
+      "id": "sat-smores",
+      "day": "Sat",
+      "name": "S'mores",
+      "menu": "smores",
+      "group": "Group 1 – AOLs"
+    },
+    {
+      "id": "sun-breakfast",
+      "day": "Sun",
+      "name": "Breakfast",
+      "menu": "coffee_bars",
+      "group": "Group 1 – AOLs"
+    }
+  ]
+}

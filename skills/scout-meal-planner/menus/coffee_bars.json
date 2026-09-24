@@ -1,0 +1,23 @@
+{
+  "name": "Coffee + breakfast bars (no cooking)",
+  "meal_type": "breakfast",
+  "hot": false,
+  "equipment": ["burner + kettle or percolator for coffee"],
+  "notes": [
+    "No cooking. Leftover fruit from earlier meals goes out here instead of buying more.",
+    "Choose nut-free bars without gelatin (check labels) while allergy status is unknown."
+  ],
+  "prep": [
+    "T-30: Start coffee (percolator or pour-over, ~0.5 oz grounds per 12 oz cup).",
+    "T-10: Set out bars, leftover fruit, cups, creamer, sugar."
+  ],
+  "items": [
+    {"key": "breakfast_bars", "kid": 1.5, "adult": 1.5, "main": true, "buffer": 0.15},
+    {"key": "coffee_ground", "kid": 0, "adult": 0.75, "buffer": 0.1},
+    {"key": "creamer_cups", "kid": 0, "adult": 1.5, "buffer": 0.1},
+    {"key": "sugar_packets", "kid": 0, "adult": 1, "buffer": 0.1},
+    {"key": "hot_cups", "kid": 0, "adult": 1.5, "buffer": 0.1},
+    {"key": "fruit", "kid": 1, "adult": 1, "buffer": 0, "from_leftovers": true},
+    {"key": "napkins", "kid": 1, "adult": 1, "buffer": 0}
+  ]
+}

@@ -1,8 +1,9 @@
 # scout-meal-planner
 
-A portable agent skill for planning group camping meals: menu, quantities,
+A portable agent skill for planning a group camping trip's meals and snacks: menus, quantities,
 dietary toggles (vegetarian, halal, kosher, gluten-free, nut-free), a DIY
-serving line, and a shopping list for whatever stores the planner uses.
+serving lines, and one combined shopping list (no duplicate supplies
+across meals) for whatever stores the planner uses.
 
 It uses the plain `SKILL.md` format (a `name` + `description` header plus
 Markdown), so it isn't tied to one AI tool. The calculator needs only `python3`.
@@ -22,8 +23,8 @@ Check your tool's docs for its current skills location.
 ## Use without an agent
 
 ```
-python3 scripts/sandwich_lunch.py --profile path/to/event.json
-python3 scripts/sandwich_lunch.py --help
+python3 scripts/plan_trip.py --profile path/to/trip.json
+python3 scripts/plan_trip.py --help
 ```
 
 See `SKILL.md` step 3 for the profile format.

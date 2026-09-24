@@ -21,6 +21,17 @@ profile. If neither is on, skip this file entirely.
   cheese, hummus, condiment packets). Most mainstream brands already are, so it
   costs nothing and makes PB&J and veg sandwiches usable for more people.
 
+## Hot meals (kosher)
+- Food cooked on shared griddles or in shared pots usually isn't kosher, even
+  with certified ingredients. The planner gives kosher eaters a **sealed
+  kosher-certified meal** for every hot menu. Ask the families: some are fine
+  with a new disposable pan, others bring their own food.
+
+## Gelatin (vegetarian, halal, kosher, no-pork)
+- Regular marshmallows and many gummy or chewy snacks and bars use pork
+  gelatin. Use gelatin-free (vegan) marshmallows for these groups, bagged
+  and labeled separately; check bar labels.
+
 ## Handling (either enabled)
 - Pre-make certified sandwiches **first**, before any regular deli is opened:
   wiped surface, fresh gloves, new disposable knife. Kosher batch first, then halal.

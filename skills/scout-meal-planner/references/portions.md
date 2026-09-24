@@ -1,5 +1,9 @@
 # Portion Reference (per person, one meal)
 
+The numbers the planner actually uses live in `menus/*.json` (and
+`scripts/sandwich.py`). This table is the rule-of-thumb reference for writing
+new menus.
+
 Kids = Cub Scout age (5–10) and siblings. Bump everything ~20% after
 strenuous activity (trail run, long hike).
 
@@ -21,6 +25,9 @@ strenuous activity (trail run, long hike).
 | Pancakes (4") | 3 | 4 | ~1 cup dry mix per 7–8 pancakes |
 | Scrambled eggs | 1.5 eggs | 2.5 eggs | |
 | Pasta (dry) | 3 oz | 4 oz | |
+| S'mores (per night) | 3–4 | 1.5 | Kids go wild; +50% marshmallows for burning/dropping |
+| Coffee | — | 1.5 cups | ~0.5 oz grounds per 12 oz cup |
+| Breakfast bars | 1.5 | 1.5 | |
 | Plates / napkins | 1.2 / 3 | same | |
 
 ## Buffers

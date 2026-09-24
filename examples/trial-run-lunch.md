@@ -4,7 +4,7 @@
 The walk-ups are covered with extra PB&J, chips and fruit, all shelf-stable. They don't add to the turkey order, so nothing gets thrown out if they don't come.
 **Also planned:** 8 very hungry guests eating about 1.5 extra sandwiches each, plus a 5% allowance for prep accidents (dropped slices, squished loaves, torn bread) on bread, spreads, turkey and cheese.
 **Estimated counts** (no RSVP data): 10 vegetarian, 5 halal, 3 kosher. These are guesses from the planner's memory of the last trip. Halal and kosher are rounded up because those families have no substitute on the line, and each has one sealed backup pack.
-Inputs and requirement toggles: `examples/trial-run-lunch.json`. Recalculate: `python3 skills/scout-meal-planner/scripts/sandwich_lunch.py --profile examples/trial-run-lunch.json`
+Inputs and requirement toggles: `examples/trial-run-lunch.json`. Recalculate: `python3 skills/scout-meal-planner/scripts/plan_trip.py --profile examples/trial-run-lunch.json`
 
 ## Summary
 - **All prep happens at camp, right before lunch.**

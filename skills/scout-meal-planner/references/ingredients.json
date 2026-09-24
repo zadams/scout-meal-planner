@@ -1,0 +1,69 @@
+{
+  "_doc": "Ingredient catalog shared by every menu. unit = what menus count in; pack = units per purchasable pack (null = buy loose/by count); store = warehouse | grocery | specialty | supply; check = label checks to print when relevant (kosher, nuts, gelatin); perishable = leftovers get thrown out (waste risk) rather than kept for the next trip. Pack sizes are typical warehouse-club sizes; override per trip with the profile's \"packs\" block (key -> units per pack).",
+  "items": {
+    "bread_sandwich":   {"name": "Sandwich bread",              "unit": "slice",   "pack": 20,   "pack_label": "loaf",                          "store": "warehouse", "check": ["kosher"]},
+    "bread_gf":         {"name": "Gluten-free bread",           "unit": "slice",   "pack": 16,   "pack_label": "loaf",                          "store": "grocery"},
+    "peanut_butter":    {"name": "Peanut butter",               "unit": "oz",      "pack": 40,   "pack_label": "oz jar",                        "store": "warehouse", "check": ["kosher"]},
+    "sunbutter":        {"name": "SunButter (nut-free)",        "unit": "oz",      "pack": 16,   "pack_label": "oz jar",                        "store": "grocery"},
+    "jelly":            {"name": "Grape jelly",                 "unit": "oz",      "pack": 32,   "pack_label": "oz jar",                        "store": "warehouse", "check": ["kosher"]},
+    "turkey_deli":      {"name": "Deli turkey, sliced",         "unit": "lb",      "pack": 2,    "pack_label": "lb pack",                       "perishable": true, "store": "warehouse"},
+    "turkey_halal":     {"name": "Halal deli turkey",           "unit": "lb",      "pack": null, "pack_label": "+ 1 sealed backup pack if estimated", "perishable": true, "store": "specialty"},
+    "turkey_kosher":    {"name": "Kosher deli turkey (sealed)", "unit": "lb",      "pack": null, "pack_label": "+ 1 sealed backup pack if estimated", "perishable": true, "store": "specialty"},
+    "cheese_sliced":    {"name": "Sliced cheese",               "unit": "slice",   "pack": 64,   "pack_label": "slice pack",                    "perishable": true, "store": "warehouse", "check": ["kosher"]},
+    "hummus":           {"name": "Hummus (plain)",              "unit": "oz",      "pack": 32,   "pack_label": "oz tub",                        "perishable": true, "store": "warehouse", "check": ["kosher", "nuts"]},
+    "lettuce":          {"name": "Lettuce, pre-washed",         "unit": "leaf",    "pack": 72,   "pack_label": "leaf bag/clamshell",            "perishable": true, "store": "warehouse"},
+    "tomato":           {"name": "Tomatoes",                    "unit": "slice",   "pack": 6,    "pack_label": "slices (1 tomato)",             "perishable": true, "store": "warehouse"},
+    "pickles":          {"name": "Dill pickle chips",           "unit": "chip",    "pack": 150,  "pack_label": "chip jar (~46 oz)",             "store": "warehouse", "check": ["kosher"]},
+    "onion":            {"name": "Onions",                      "unit": "onion",   "pack": 1,    "pack_label": "onion",                         "store": "warehouse"},
+    "banana_peppers":   {"name": "Banana peppers",              "unit": "ring",    "pack": 150,  "pack_label": "ring jar (~32 oz)",             "store": "warehouse", "check": ["kosher"]},
+    "bell_pepper":      {"name": "Bell peppers",                "unit": "pepper",  "pack": 6,    "pack_label": "pepper pack",                   "perishable": true, "store": "warehouse"},
+    "mayo_packets":     {"name": "Mayo packets",                "unit": "packet",  "pack": 200,  "pack_label": "ct box",                        "store": "warehouse", "check": ["kosher"]},
+    "mustard_packets":  {"name": "Mustard packets",             "unit": "packet",  "pack": 500,  "pack_label": "ct box",                        "store": "warehouse", "check": ["kosher"]},
+    "chips":            {"name": "Chips, snack bags",           "unit": "bag",     "pack": 40,   "pack_label": "ct variety pack",               "store": "warehouse", "check": ["nuts"]},
+    "fruit":            {"name": "Whole fruit",                 "unit": "serving", "pack": null, "pack_label": "see fruit breakdown",           "perishable": true, "store": "warehouse"},
+    "plates":           {"name": "Plates",                      "unit": "plate",   "pack": null, "pack_label": "",                              "store": "supply"},
+    "bowls":            {"name": "Bowls",                       "unit": "bowl",    "pack": null, "pack_label": "",                              "store": "supply"},
+    "napkins":          {"name": "Napkins",                     "unit": "napkin",  "pack": null, "pack_label": "",                              "store": "supply"},
+    "sandwich_bags":    {"name": "Sandwich bags + labels",      "unit": "bag",     "pack": null, "pack_label": "",                              "store": "supply"},
+    "water":            {"name": "Bottled water",               "unit": "bottle",  "pack": 40,   "pack_label": "pack",                          "store": "warehouse"},
+
+    "eggs":             {"name": "Eggs",                        "unit": "egg",     "pack": 60,   "pack_label": "ct flat",                       "perishable": true, "store": "warehouse"},
+    "tortilla_burrito": {"name": "Burrito tortillas (10\")",    "unit": "tortilla","pack": 20,   "pack_label": "ct pack",                       "perishable": true, "store": "warehouse", "check": ["kosher"]},
+    "cheese_shredded":  {"name": "Shredded cheese",             "unit": "oz",      "pack": 80,   "pack_label": "oz bag (5 lb)",                 "perishable": true, "store": "warehouse", "check": ["kosher"]},
+    "salsa":            {"name": "Salsa",                       "unit": "oz",      "pack": 48,   "pack_label": "oz jar",                        "store": "warehouse", "check": ["kosher"]},
+    "cooking_spray":    {"name": "Cooking spray / oil",         "unit": "can",     "pack": 2,    "pack_label": "can pack",                      "store": "warehouse"},
+
+    "pasta":            {"name": "Pasta, dry",                  "unit": "oz",      "pack": 16,   "pack_label": "oz box",                        "store": "warehouse", "check": ["kosher"]},
+    "marinara":         {"name": "Marinara sauce, jarred",      "unit": "oz",      "pack": 24,   "pack_label": "oz jar",                        "store": "warehouse", "check": ["kosher"]},
+    "ground_turkey":    {"name": "Ground turkey",               "unit": "lb",      "pack": 3,    "pack_label": "lb pack",                       "perishable": true, "store": "warehouse"},
+    "parmesan":         {"name": "Grated parmesan",             "unit": "oz",      "pack": 24,   "pack_label": "oz shaker",                     "store": "warehouse", "check": ["kosher"]},
+    "salad_greens":     {"name": "Salad greens, pre-washed",    "unit": "oz",      "pack": 16,   "pack_label": "oz clamshell",                  "perishable": true, "store": "warehouse"},
+    "salad_dressing":   {"name": "Salad dressing",              "unit": "oz",      "pack": 36,   "pack_label": "oz bottle",                     "store": "warehouse", "check": ["kosher"]},
+
+    "graham_crackers":  {"name": "Graham crackers",             "unit": "sheet",   "pack": 54,   "pack_label": "sheet box (~3 lb)",             "store": "warehouse", "check": ["kosher"]},
+    "marshmallows":     {"name": "Marshmallows (regular)",      "unit": "mallow",  "pack": 90,   "pack_label": "ct bag (~24 oz)",               "store": "warehouse", "check": ["gelatin"]},
+    "marshmallows_vegan": {"name": "Vegan marshmallows (gelatin-free, kosher)", "unit": "mallow", "pack": 30, "pack_label": "ct bag (~10 oz)", "store": "grocery"},
+    "chocolate_bars":   {"name": "Milk chocolate bars (1.55 oz)", "unit": "bar",   "pack": 36,   "pack_label": "ct box",                        "store": "warehouse", "check": ["kosher", "nuts"]},
+
+    "coffee_ground":    {"name": "Ground coffee",               "unit": "oz",      "pack": 40,   "pack_label": "oz can",                        "store": "warehouse"},
+    "creamer_cups":     {"name": "Creamer singles",             "unit": "cup",     "pack": 180,  "pack_label": "ct box",                        "store": "warehouse"},
+    "sugar_packets":    {"name": "Sugar packets",               "unit": "packet",  "pack": 200,  "pack_label": "ct box",                        "store": "warehouse"},
+    "hot_cups":         {"name": "Hot cups + lids",             "unit": "cup",     "pack": 50,   "pack_label": "ct sleeve",                     "store": "supply"},
+    "breakfast_bars":   {"name": "Breakfast bars",              "unit": "bar",     "pack": 48,   "pack_label": "ct box",                        "store": "warehouse", "check": ["nuts", "gelatin", "kosher"]},
+
+    "kosher_sealed_meal": {"name": "Sealed kosher-certified meal (hot-meal alternative)", "unit": "meal", "pack": null, "pack_label": "", "store": "specialty"}
+  },
+
+  "fruit_types": {
+    "_doc": "How a 'fruit' serving converts to real fruit. per_serving = pieces per serving; pack = pieces per pack.",
+    "clementine": {"name": "Clementines", "per_serving": 2, "pack": 30, "pack_label": "5 lb bag (~30)"},
+    "banana":     {"name": "Bananas",     "per_serving": 1, "pack": 9,  "pack_label": "3 lb bunch (~9)"},
+    "apple":      {"name": "Apples",      "per_serving": 1, "pack": 13, "pack_label": "5 lb bag (~13)"}
+  },
+
+  "checks": {
+    "kosher":  "Kosher enabled: look for a kosher symbol (OU, OK, Star-K, ...).",
+    "nuts":    "Nut status unknown or nut-free: check for nut / tree-nut ingredients and 'may contain' warnings.",
+    "gelatin": "Regular gelatin is usually pork-derived: not OK for vegetarian, halal, kosher, or no-pork eaters."
+  }
+}

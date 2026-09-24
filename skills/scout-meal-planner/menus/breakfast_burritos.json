@@ -1,0 +1,29 @@
+{
+  "name": "Egg breakfast burritos + fruit",
+  "meal_type": "breakfast",
+  "hot": true,
+  "equipment": ["griddles", "burners", "spatulas", "large bowls + whisks", "cutting boards + knives", "foil or a covered pan for holding"],
+  "notes": [
+    "\"Lots of eggs\" per the scoutmaster: planned 2.5 eggs per kid, 3.5 per adult.",
+    "Build-your-own: scrambled eggs, shredded cheese, peppers/onions, salsa. No meat, so it is pork- and beef-free and works for vegetarians.",
+    "Ask about egg allergies; a scout with one needs a separate plan."
+  ],
+  "prep": [
+    "T-45: Dice onions and peppers; crack and whisk eggs in batches of ~5 dozen.",
+    "T-30: Griddles on; saute peppers/onions first, then scramble eggs in batches into a covered pan.",
+    "T-10: Warm tortillas on the griddle edge; set out cheese, salsa, fruit."
+  ],
+  "line": ["plates", "tortillas", "eggs (spoon)", "peppers & onions", "cheese", "salsa", "fruit", "napkins"],
+  "items": [
+    {"key": "eggs", "kid": 2.5, "adult": 3.5, "main": true, "buffer": 0.08, "loss": true},
+    {"key": "tortilla_burrito", "kid": 1.25, "adult": 1.75, "main": true, "buffer": 0.15, "loss": true},
+    {"key": "cheese_shredded", "kid": 0.75, "adult": 1.0, "buffer": 0.08, "loss": true},
+    {"key": "onion", "kid": 0.06, "adult": 0.08, "share": 0.5, "buffer": 0.08},
+    {"key": "bell_pepper", "kid": 0.06, "adult": 0.08, "share": 0.5, "buffer": 0.08},
+    {"key": "salsa", "kid": 0.75, "adult": 1.25, "share": 0.6, "buffer": 0.1},
+    {"key": "cooking_spray", "kid": 0.02, "adult": 0.02, "buffer": 0},
+    {"key": "fruit", "kid": 1, "adult": 1, "buffer": 0.25},
+    {"key": "plates", "kid": 1, "adult": 1, "buffer": 0.2},
+    {"key": "napkins", "kid": 2, "adult": 2, "buffer": 0}
+  ]
+}
