@@ -1,0 +1,57 @@
+{
+  "event": "Trial run lunch",
+  "kids": 35,
+  "adults": 38,
+  "walkups": 10,
+  "big_eaters": 8,
+  "prep_loss": 0.05,
+  "pbj_share_kids": 0.7,
+  "pbj_share_adults": 0.35,
+  "hungry": false,
+  "water_bottles": 0,
+  "requirements": {
+    "vegetarian": {
+      "enabled": true,
+      "count": 10,
+      "estimated": true
+    },
+    "halal": {
+      "enabled": true,
+      "count": 5,
+      "estimated": true
+    },
+    "kosher": {
+      "enabled": true,
+      "count": 3,
+      "estimated": true
+    },
+    "gluten_free": {
+      "enabled": false,
+      "count": 0
+    },
+    "nut_free": {
+      "enabled": false
+    }
+  },
+  "stores": {
+    "warehouse": [
+      "Sam's Club"
+    ],
+    "grocery": "Kroger",
+    "specialty": "local halal/kosher grocer"
+  },
+  "packs": {
+    "pb_jar_oz": 96,
+    "jelly_jar_oz": 60,
+    "turkey_pack_lb": 1.375,
+    "cheese_pack_slices": 160,
+    "chips_pack": 50,
+    "hummus_tub_oz": 32
+  },
+  "toppings": [
+    "lettuce",
+    "tomato",
+    "pickles",
+    "onion"
+  ]
+}

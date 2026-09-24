@@ -1,0 +1,4 @@
+# Real event plans often contain local store/location details; keep them private.
+plans/
+__pycache__/
+.DS_Store
