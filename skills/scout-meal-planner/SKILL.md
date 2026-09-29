@@ -27,7 +27,11 @@ Required:
 - **Cooking gear** on site (griddles, burners, pots, Dutch ovens). This
   decides which menus are realistic.
 - **Dietary needs**: which requirements apply and roughly how many people
-  (see the toggles in step 3).
+  (see the toggles in step 3). Common ones: `vegetarian`, `no_pork`,
+  `no_red_meat` (these two eat turkey or chicken; regular gelatin is out).
+  Only enable `halal` / `kosher` when a family says they need **certified**
+  meat. Not eating pork is not the same as keeping halal, and certified
+  meat plus sealed meals is a lot of extra work to plan for nobody.
 - **Allergies: always ask about peanut/tree nut explicitly.** Never assume
   "none" just because nobody mentioned it. "It was fine last time" is a
   reasonable basis for keeping PB; still recommend an allergy question on the RSVP.
@@ -150,6 +154,8 @@ planner combine them:
 - **shopping**: `"per_group"` (default) gives each group its own list, with one
   buyer per shared item and hand-offs. `"per_pack"` gives one combined list for
   a single shopper.
+- **buyers**: pin who buys an item (`{"fruit": "Group 3"}`), e.g. when it's
+  already in someone's cart. Otherwise the group using the most buys it.
 - **extras**: add-on menus for a meal, usually drinks: `cold_drink` (bulk
   lemonade/Kool-Aid), `hot_drinks` (coffee/tea packets + creamer, sugar,
   sweetener), `hot_cocoa` (bulk mix made in a large Igloo). Menus can also `"include"` other menus
@@ -170,6 +176,19 @@ and carry-forwards) plus its shopping list and hand-offs:
 ```
 python3 scripts/plan_trip.py --profile plans/<trip>.json --handouts plans/handouts
 ```
+
+A one-page review of the whole plan (open questions, schedule, what pooling
+saved, decisions, every meal, every shopping list, leftovers). Publish it as
+an artifact when the planner wants to review or share the plan:
+
+```
+python3 scripts/plan_trip.py --profile plans/<trip>.json --review plans/<trip>-review.html
+```
+
+Trip-specific prose for it lives in the profile: `"decisions"` (list of
+`[title, text]`), `"questions"` (open questions, shown first), and
+`"group_notes"` (`{group: note}` shown on that group's list). Keep them
+current as answers come in.
 
 In per-pack mode, a single `pack-shopping-list.html` is written too. Open
 the HTML in a browser and print; each meal starts on a new page.

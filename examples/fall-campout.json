@@ -1,5 +1,5 @@
 {
-  "trip": "Fall campout",
+  "trip": "Fall Campout",
   "kids": 35,
   "adults": 38,
   "walkups": 10,
@@ -9,22 +9,27 @@
   "requirements": {
     "vegetarian": {
       "enabled": true,
-      "count": 10,
+      "count": 8,
       "estimated": true
     },
-    "halal": {
+    "no_pork": {
       "enabled": true,
       "count": 5,
       "estimated": true
     },
-    "kosher": {
+    "no_red_meat": {
       "enabled": true,
-      "count": 3,
+      "count": 4,
       "estimated": true
     },
+    "halal": {
+      "enabled": false
+    },
+    "kosher": {
+      "enabled": false
+    },
     "gluten_free": {
-      "enabled": false,
-      "count": 0
+      "enabled": false
     },
     "nut_free": {
       "enabled": false
@@ -123,5 +128,62 @@
       "menu": "coffee_bars",
       "group": "Group 1 – AOLs"
     }
-  ]
+  ],
+  "buyers": {
+    "fruit": "Group 3 – Bears/Webelos"
+  },
+  "decisions": [
+    [
+      "Turkey + vegetarian at every meal",
+      "The 17 people with restrictions are vegetarian, no pork, or no red meat. Every meal has a turkey (non-red-meat) option and a vegetarian option, and there's no pork or beef anywhere."
+    ],
+    [
+      "Hummus and veggies",
+      "Lunch's vegetarian option is a hummus-and-veggie sandwich (cucumber, peppers, lettuce, tomato; cheese optional). Cucumbers and pepper strips are on the line for everyone."
+    ],
+    [
+      "Pork gelatin",
+      "Regular marshmallows are usually pork gelatin, so vegetarian, no-pork and no-red-meat eaters get vegan marshmallows from a separate, labeled tray."
+    ],
+    [
+      "Fruit",
+      "Bought together for breakfast and lunch by Group 3 (already in the Sam's cart), with ~83 servings handed to Group 2. Group 2 doesn't buy fruit. Sunday's fruit comes from what's left."
+    ],
+    [
+      "Oil",
+      "One bottle of vegetable oil covers the breakfast griddle and dinner. No separate cooking spray."
+    ],
+    [
+      "Grilled cheese",
+      "Still off at lunch: it would need a second hot station and a batch cook for 83. The hummus sandwich covers vegetarians."
+    ],
+    [
+      "S'mores",
+      "About 3.5 per kid each night, with +50% marshmallows for burning and dropping. That allowance counts as used."
+    ],
+    [
+      "Halal and kosher",
+      "Off. No family has asked for certified meat. Turning either back on adds certified turkey and sealed meals automatically."
+    ],
+    [
+      "Saturday coffee",
+      "Coffee, tea and hot chocolate at Saturday breakfast were added by the planner; the scoutmaster listed coffee only for Sunday."
+    ],
+    [
+      "Mess kits",
+      "Campers bring their own, so no plates, bowls or cups are bought. Napkins, 12 rolls of paper towels and crew-sized gloves (adult and kid) are included."
+    ]
+  ],
+  "questions": [
+    "The split of the 17 with restrictions: how many vegetarian vs. no pork vs. no red meat? Only the vegetarian number changes quantities. The plan guesses 8 / 5 / 4.",
+    "Nut and egg allergies are still unknown. Add them to the RSVP.",
+    "What's already in the supply bin and chuck box (napkins, paper towels, foil pans, salt, oil, spices, hot sauce)? Anything on hand comes off the lists.",
+    "Who's buying the vegetable oil? The plan has Group 4 buying one bottle for breakfast and dinner.",
+    "Are Groups 1 and 4 (both AOLs) one shopper or two?",
+    "Keep coffee and hot chocolate at Saturday breakfast?"
+  ],
+  "group_notes": {
+    "Group 3 – Bears/Webelos": "Most of this is already in the Sam's Club cart (Curbside Pickup), including fruit for breakfast and lunch. Cart changes: deli turkey 5 → 7 packs; add cucumbers, bell peppers, drink mix, adult gloves and zip-top bags. PB, jelly, mayo and mustard are ship-only online; buy them in-club or at Kroger.",
+    "Group 2 – Lions/Tigers/Wolves": "Don't buy fruit: Group 3 buys it for breakfast and lunch together and hands you ~83 servings."
+  }
 }

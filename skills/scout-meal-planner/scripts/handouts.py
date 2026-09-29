@@ -42,7 +42,8 @@ footer { color: var(--muted); font-size: 12px; margin-top: 28px; }
 }
 """
 
-REQ_LABEL = {"vegetarian": "Vegetarian", "halal": "Halal", "kosher": "Kosher",
+REQ_LABEL = {"vegetarian": "Vegetarian", "no_pork": "No pork", "no_red_meat": "No red meat",
+             "halal": "Halal", "kosher": "Kosher",
              "gluten_free": "Gluten-free", "nut_free": "Nut-free"}
 
 

@@ -15,6 +15,8 @@ TOPPINGS = {
     "tomato":         (0.5, 1, "tomato", 1),
     "pickles":        (0.5, 3, "pickles", 1),
     "onion":          (0.3, 2, "onion", 1 / 20),   # ~20 thin rings per onion
+    "cucumber":       (0.4, 3, "cucumber", 1),
+    "bell_pepper":    (0.3, 3, "bell_pepper", 1 / 12),  # ~12 strips per pepper
     "banana_peppers": (0.25, 4, "banana_peppers", 1),
 }
 DEFAULT_TOPPINGS = ["lettuce", "tomato", "pickles"]
@@ -37,8 +39,8 @@ MENU = {
         {"t": "T-50", "if": "kosher", "text": "KOSHER FIRST, before any regular turkey is opened: fresh gloves, new disposable knife, wiped surface. Make {kosher_count} sandwiches with kosher bread + kosher turkey ({turkey_kosher}) + lettuce and pickles from freshly opened containers. NO cheese. Seal, label \"KOSHER, no dairy\", own cooler bag."},
         {"t": "T-45", "if": "halal", "text": "HALAL: wipe down, fresh gloves, new knife. Make {halal_count} sandwiches with halal turkey ({turkey_halal}) + cheese + lettuce and pickles. Seal, label \"HALAL\", own cooler bag."},
         {"t": "T-45", "text": "PB&J assembly line: lay out bread → peanut butter → jelly → close → cut in half. Make {pbj_count} sandwiches using about {peanut_butter} of peanut butter and {jelly} of jelly. Halves go on foil trays; cover them."},
-        {"t": "T-35", "text": "Toppings: on the certified surface (after those sandwiches are sealed and away), slice the tomatoes and red onions thin. Covered pans, into the cooler."},
-        {"t": "T-10", "text": "Build-your-own line: bread, hummus in a bowl with its own spoon, one tray each of turkey ({turkey_deli} total) and cheese, then toppings (each with its own tongs or fork), then mayo/mustard packets. Keep backup trays in the cooler."},
+        {"t": "T-35", "text": "Toppings: on the second prep surface (after any certified sandwiches are sealed and away), slice tomatoes, cucumbers and red onions thin and cut peppers into strips. Covered pans, into the cooler."},
+        {"t": "T-10", "text": "Build-your-own line: bread, hummus in a bowl with its own spoon (veggies next to it), one tray each of turkey ({turkey_deli} total) and cheese, then toppings (each with its own tongs or fork), then mayo/mustard packets. Keep backup trays in the cooler."},
     ],
     "line": ["hand sanitizer", "grab-and-go bins: PB&J · HALAL · KOSHER", "bread", "hummus (own spoon)",
              "turkey (tongs)", "cheese (tongs)", "toppings", "mayo/mustard packets", "chips", "fruit", "napkins"],
@@ -57,7 +59,9 @@ MENU = {
         "Wipe tables; pack out trash.",
     ],
     "diet": {
-        "vegetarian": "Hummus + cheese + lettuce sandwich on the build-your-own line (a full allotment is planned for them).",
+        "vegetarian": "Hummus + veggie sandwich (cucumber, peppers, lettuce, tomato; cheese optional) on the build-your-own line. A full allotment is planned for them.",
+        "no_pork": "Turkey sandwich on the build-your-own line (no pork anywhere at this meal).",
+        "no_red_meat": "Turkey sandwich on the build-your-own line (no beef or pork anywhere at this meal).",
         "halal": "Pre-made, sealed HALAL turkey + cheese sandwich from the labeled bin.",
         "kosher": "Pre-made, sealed KOSHER turkey sandwich (no dairy) from the labeled bin.",
         "gluten_free": "Pre-made GF sandwiches, bagged and labeled, made first.",
@@ -89,6 +93,7 @@ def needs(ctx, opts):
     halal_sw = halal * per * RESTRICTED_BUFFER
     kosher_sw = kosher * per * RESTRICTED_BUFFER
     topped = deli + veg_sw + halal_sw + kosher_sw
+    veg_toppings = [t for t in ("cucumber", "bell_pepper") if t not in toppings] if veg_sw else []
     people = ctx.people
 
     n = []  # (key, qty, buffer, loss) where loss True = trip prep_loss
@@ -103,12 +108,16 @@ def needs(ctx, opts):
         n.append(("turkey_halal", halal_sw * 2.5 / 16, 0, True))
     if kosher_sw:
         n.append(("turkey_kosher", kosher_sw * 2.5 / 16, 0, True))
-    n.append(("cheese_sliced", deli * 1.5 + veg_sw * 2 + halal_sw * 1.5, 0.08, True))
+    # veg sandwich is hummus + veggies; cheese is optional (1 slice)
+    n.append(("cheese_sliced", deli * 1.5 + veg_sw * 1 + halal_sw * 1.5, 0.08, True))
     if veg_sw:
         n.append(("hummus", veg_sw * 1.0, 0.08, True))
     for t in toppings:
         share, each, key, conv = TOPPINGS[t]
         n.append((key, topped * share * each * conv, 0.08, False))
+    for t in veg_toppings:  # hummus sandwiches always get crunchy veggies
+        _, each, key, conv = TOPPINGS[t]
+        n.append((key, veg_sw * each * conv, 0.08, False))
     n.append(("mayo_packets", topped * 0.75, 0, False))
     n.append(("mustard_packets", topped * 0.75, 0, False))
     n.append(("chips", people, 0.1, False))
@@ -128,7 +137,7 @@ def needs(ctx, opts):
 
     mix = [f"{pbj:.0f} PB&J", f"{deli:.0f} turkey"]
     if veg_sw:
-        mix.append(f"{veg_sw:.0f} veg (hummus + cheese)")
+        mix.append(f"{veg_sw:.0f} veg (hummus + veggies)")
     if halal_sw:
         mix.append(f"{halal_sw:.0f} halal")
     if kosher_sw:

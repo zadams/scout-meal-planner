@@ -14,7 +14,7 @@
     "\"Lots of eggs\" per the scoutmaster: planned 2.5 eggs per kid, 3.5 per adult.",
     "Build-your-own: scrambled eggs, shredded cheese, peppers/onions, salsa. No meat, so it is pork- and beef-free and works for vegetarians.",
     "Ask about egg allergies; a scout with one needs a separate plan.",
-    "Cooking staples: butter for the eggs, cooking spray for the griddle, salt, pepper, hot sauce on the line.",
+    "Cooking staples: butter for the eggs, vegetable oil for the griddle (same bottle as dinner), salt, pepper, hot sauce on the line.",
     "Crew: Young scouts (K-2nd) help with fruit and serving; adults run the griddles.",
     "Storage: bag opened tortillas, shredded cheese and leftover diced onions/peppers; label, date, back in the cooler."
   ],
@@ -75,10 +75,11 @@
       "buffer": 0.1
     },
     {
-      "key": "cooking_spray",
-      "kid": 0.02,
-      "adult": 0.02,
-      "buffer": 0
+      "key": "cooking_oil",
+      "kid": 0.12,
+      "adult": 0.15,
+      "buffer": 0.1,
+      "_doc": "griddle oil, ~1 oz per 7 people; shares the bottle with dinner"
     },
     {
       "key": "fruit",
@@ -209,6 +210,8 @@
     "halal": "OK as served: no meat, and the cheese is kosher-certified (no animal rennet).",
     "kosher": "Sealed kosher meal (shared griddles aren't kosher). Hand it over unopened.",
     "gluten_free": "Tortillas contain wheat. Serve eggs, veggies and fruit in a bowl, or bring GF tortillas.",
-    "nut_free": "No nuts on this menu; check the salsa label."
+    "nut_free": "No nuts on this menu; check the salsa label.",
+    "no_pork": "OK as served: no meat at this meal.",
+    "no_red_meat": "OK as served: no meat at this meal."
   }
 }

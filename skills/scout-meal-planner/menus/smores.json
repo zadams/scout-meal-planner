@@ -10,7 +10,7 @@
   "notes": [
     "Kids go wild: planned ~3.5 s'mores per kid, ~1.5 per adult, per night.",
     "Marshmallows carry a +50% burn/drop allowance; grahams +15% for breakage.",
-    "Vegan (gelatin-free) marshmallows go in a separate, labeled bag for vegetarian, halal and kosher eaters. Regular marshmallows are usually pork gelatin.",
+    "Vegan (gelatin-free) marshmallows go in a separate, labeled bag for vegetarian, no-pork, no-red-meat, halal and kosher eaters. Regular marshmallows are usually pork gelatin.",
     "Storage: bag opened grahams, chocolate and marshmallows in gallon bags and put them in a sealed bin or car overnight (critters)."
   ],
   "items": [
@@ -29,6 +29,8 @@
       "main": true,
       "except": [
         "vegetarian",
+        "no_pork",
+        "no_red_meat",
         "halal",
         "kosher"
       ],
@@ -41,6 +43,8 @@
       "adult": 1.5,
       "only": [
         "vegetarian",
+        "no_pork",
+        "no_red_meat",
         "halal",
         "kosher"
       ],
@@ -97,6 +101,8 @@
       "t": "T-10",
       "if": [
         "vegetarian",
+        "no_pork",
+        "no_red_meat",
         "halal",
         "kosher"
       ],
@@ -123,6 +129,8 @@
     "halal": "Vegan marshmallows from the labeled tray.",
     "kosher": "Vegan (kosher-certified) marshmallows from the labeled tray; check the graham and chocolate symbols.",
     "gluten_free": "Graham crackers have wheat; bring GF grahams.",
-    "nut_free": "Check the chocolate label for nuts and 'may contain'."
+    "nut_free": "Check the chocolate label for nuts and 'may contain'.",
+    "no_pork": "Vegan marshmallows from the labeled tray (regular ones are pork gelatin).",
+    "no_red_meat": "Vegan marshmallows from the labeled tray (regular ones are pork gelatin)."
   }
 }

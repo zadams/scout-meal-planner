@@ -564,6 +564,14 @@
    "pack": null,
    "pack_label": "",
    "store": "supply"
+  },
+  "cucumber": {
+   "name": "Cucumbers",
+   "unit": "slice",
+   "pack": 20,
+   "pack_label": "slices (1 cucumber)",
+   "store": "warehouse",
+   "perishable": true
   }
  },
  "fruit_types": {
@@ -590,7 +598,7 @@
  "checks": {
   "kosher": "Kosher enabled: look for a kosher symbol (OU, OK, Star-K, ...).",
   "nuts": "Nut status unknown or nut-free: check for nut / tree-nut ingredients and 'may contain' warnings.",
-  "gelatin": "Regular gelatin is usually pork-derived: not OK for vegetarian, halal, kosher, or no-pork eaters."
+  "gelatin": "Regular gelatin is usually pork-derived: not OK for vegetarian, no-pork, no-red-meat, halal or kosher eaters."
  },
  "reuse": {
   "_doc": "Leftover carry-forward for perishables and things cut at camp (shelf-stable items just stay in their own packaging): ingredient -> ingredients in LATER meals it can go into. Each match is listed and gets a labeled gallon bag; later purchases are not reduced (the cushion may get eaten).",
@@ -625,6 +633,10 @@
   "salad_greens": [
    "salad_greens",
    "lettuce"
+  ],
+  "cucumber": [
+   "cucumber",
+   "salad_greens"
   ]
  }
 }

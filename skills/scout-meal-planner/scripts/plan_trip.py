@@ -26,9 +26,12 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 SKILL = os.path.dirname(HERE)
 sys.path.insert(0, HERE)
 import handouts  # noqa: E402
+import review  # noqa: E402
 import sandwich  # noqa: E402
 
-REQUIREMENTS = ["vegetarian", "halal", "kosher", "gluten_free", "nut_free"]
+# no_pork / no_red_meat: eat turkey or chicken, avoid pork gelatin. halal / kosher:
+# need CERTIFIED meat and handling; enable only when a family says so.
+REQUIREMENTS = ["vegetarian", "no_pork", "no_red_meat", "halal", "kosher", "gluten_free", "nut_free"]
 DEFAULT_FRUIT_MIX = {"clementine": 0.4, "banana": 0.3, "apple": 0.3}
 BIG_EATER_SHARE_OF_ADULT = 0.85  # a big eater's extra, as a fraction of an adult portion
 INTEGER_UNITS = {"egg", "packet", "bag", "plate", "bowl", "napkin", "bottle", "tortilla",
@@ -285,6 +288,8 @@ def plan(trip, catalog):
             by_group[grp] += q * (1 + l)
         if trip.get("shopping", "per_group") == "per_pack":
             buyer = "Pack shopper"
+        elif key in trip.get("buyers", {}):  # planner pinned who buys this item
+            buyer = trip["buyers"][key]
         else:
             buyer = max(by_group, key=lambda g: (by_group[g], -min(x[0] for x in regular if x[1] == g)))
         info = items[key]
@@ -463,7 +468,7 @@ def report(result, trip, catalog):
         for c in l["check"]:
             checks[c].append(l["name"])
     active = {"kosher": bool(reqs.get("kosher")), "nuts": True,
-              "gelatin": any(reqs.get(k) for k in ("vegetarian", "halal", "kosher"))}
+              "gelatin": any(reqs.get(k) for k in ("vegetarian", "no_pork", "no_red_meat", "halal", "kosher"))}
     shown = [c for c in checks if active.get(c)]
     if shown:
         p()
@@ -479,6 +484,8 @@ def main():
     ap.add_argument("--json", action="store_true", help="print structured output")
     ap.add_argument("--handouts", metavar="DIR",
                     help="also write one printable HTML packet per group (menu, prep, serving, shopping)")
+    ap.add_argument("--review", metavar="FILE",
+                    help="also write a one-page HTML review of the whole plan (shareable as an artifact)")
     for k in ("kids", "adults", "walkups", "big_eaters"):
         ap.add_argument("--" + k.replace("_", "-"), type=int)
     for r in ("vegetarian", "halal", "kosher", "gluten_free"):
@@ -505,6 +512,10 @@ def main():
         print(json.dumps(result, indent=2, default=str))
     else:
         print(report(result, trip, catalog))
+    if a.review:
+        with open(a.review, "w") as f:
+            f.write(review.build(result, trip, catalog, sys.modules[__name__]))
+        print(f"Wrote {a.review}", file=sys.stderr)
     if a.handouts:
         for path in handouts.write_handouts(result, trip, catalog, a.handouts, fmt_qty):
             print(f"Wrote {path}", file=sys.stderr)

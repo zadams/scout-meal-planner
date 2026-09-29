@@ -26,7 +26,7 @@ class TrialRunLunchRegression(unittest.TestCase):
     BASELINE = {  # key: (amount, packs)
         "bread_sandwich": (342, 18), "peanut_butter": (113, 2), "jelly": (72, 2),
         "turkey_deli": (5.9, 5), "turkey_halal": (1.5, None), "turkey_kosher": (0.9, None),
-        "cheese_sliced": (114, 1), "hummus": (21, 1), "lettuce": (72, None), "tomato": (36, 7),
+        "cheese_sliced": (94, 1),  # 2026-09-29: veg sandwich became hummus + veggies, cheese optional (1 slice, was 2) "hummus": (21, 1), "lettuce": (72, None), "tomato": (36, 7),
         "pickles": (108, 1), "onion": (43 / 20, 3), "mayo_packets": (51, 1), "chips": (92, 2),
         "fruit": (104, None), "plates": (100, None), "napkins": (249, None), "sandwich_bags": (15, None),
     }
@@ -82,8 +82,18 @@ class Requirements(unittest.TestCase):
     def test_vegan_marshmallows_only_when_needed(self):
         p = {"kids": 20, "adults": 20, "meals": [{"menu": "smores", "group": "A"}]}
         self.assertNotIn("marshmallows_vegan", run(p))
-        p["requirements"] = {"vegetarian": {"enabled": True, "count": 4}}
-        self.assertIn("marshmallows_vegan", run(p))
+        for req in ("vegetarian", "no_pork", "no_red_meat"):
+            with self.subTest(req=req):
+                p["requirements"] = {req: {"enabled": True, "count": 4}}
+                self.assertIn("marshmallows_vegan", run(p))
+
+    def test_no_pork_and_no_red_meat_eat_turkey(self):
+        base = {"kids": 20, "adults": 20, "meals": [{"menu": "sandwich_lunch", "group": "A"}]}
+        restricted = {**base, "requirements": {"no_pork": {"enabled": True, "count": 5},
+                                               "no_red_meat": {"enabled": True, "count": 4}}}
+        # they're served by the regular turkey line: no carve-out, no certified meat
+        self.assertEqual(run(base)["turkey_deli"]["amount"], run(restricted)["turkey_deli"]["amount"])
+        self.assertNotIn("turkey_halal", run(restricted))
 
     def test_enabled_without_count_errors(self):
         p = copy.deepcopy(EXAMPLE)
@@ -123,6 +133,12 @@ class TripOptions(unittest.TestCase):
         self.assertIn(("l", "d", "Lettuce, pre-washed"), carry)  # lunch lettuce -> dinner salad
         self.assertIn(("b", "d", "Onions"), carry)              # breakfast onions -> meat sauce
         self.assertFalse(any("Chips" in c[2] for c in carry))   # shelf-stable: no bag
+
+    def test_pinned_buyer(self):
+        p = {**two_meal_trip(), "buyers": {"fruit": "B"}}
+        self.assertEqual(run(p)["fruit"]["buyer"], "B")
+        p["buyers"] = {"fruit": "A"}
+        self.assertEqual(run(p)["fruit"]["buyer"], "A")
 
     def test_shopping_mode(self):
         p = two_meal_trip()
@@ -174,6 +190,16 @@ class Handouts(unittest.TestCase):
             text = open(paths[0]).read()
             self.assertIn("Prep &amp; cooking", text)
             self.assertIn("Shopping list", text)
+
+
+class ReviewPage(unittest.TestCase):
+    def test_review_builds_with_savings_and_questions(self):
+        p = {**two_meal_trip(), "questions": ["Real counts?"], "decisions": [["Fruit", "Buy together."]]}
+        trip = plan_trip.normalize(p)
+        page = plan_trip.review.build(plan_trip.plan(trip, CATALOG), trip, CATALOG, plan_trip)
+        self.assertIn("Real counts?", page)
+        self.assertIn("What planning together saved", page)  # fruit is shared by both meals
+        self.assertNotRegex(page, r"\{[a-z_]+\}")
 
 
 if __name__ == "__main__":

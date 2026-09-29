@@ -249,6 +249,8 @@
     "halal": "VEG sauce pot + pasta + salad. The meat sauce is ground turkey that isn't halal-certified.",
     "kosher": "Sealed kosher meal (shared pots aren't kosher). Hand it over unopened.",
     "gluten_free": "Regular pasta has wheat. Cook a separate pot of GF pasta first, with its own colander.",
-    "nut_free": "No nuts on this menu; check the dressing and parmesan labels."
+    "nut_free": "No nuts on this menu; check the dressing and parmesan labels.",
+    "no_pork": "MEAT sauce is ground turkey (no pork), or the VEG sauce.",
+    "no_red_meat": "MEAT sauce is ground turkey (no beef or pork), or the VEG sauce."
   }
 }

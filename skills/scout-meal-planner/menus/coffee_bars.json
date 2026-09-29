@@ -71,6 +71,8 @@
     "halal": "Check the bars for gelatin.",
     "kosher": "Check the bars for a kosher symbol.",
     "gluten_free": "Bring GF bars.",
-    "nut_free": "Nut-free bars only."
+    "nut_free": "Nut-free bars only.",
+    "no_pork": "Check the bars for gelatin.",
+    "no_red_meat": "Check the bars for gelatin."
   }
 }
